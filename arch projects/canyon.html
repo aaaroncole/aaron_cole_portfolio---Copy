@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aaron Cole - Grand Canyon Analysis</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <div class="page-container">
+         <header class="header">
+    		<a href="../index.html" class="logo">aaron cole</a>
+    		<nav class="nav">
+       		 <div class="dropdown">
+          		 <span class="work-label">work</span> 
+           		 <div class="dropdown-content">
+               		 <a href="../architecture.html" class="active">architecture</a>
+               		 <a href="#photography">photography</a>
+           		 </div>
+       		 </div>
+       		 <a href="#journal">journal</a>
+        		<a href="#info">info</a>
+   		 </nav>
+	</header>
+
+
+        <div class="content-container">
+            <a href="../architecture.html" class="back-button">← architecture</a>
+            
+            <h1 class="project-title">Grand Canyon Analysis</h1>
+            <p class="project-subtitle">landscape architecture · 2023</p>
+
+            <!-- Slideshow -->
+            <div class="slideshow-container">
+                <!-- Main slide display -->
+                <div class="slide-display">
+                    <img id="mainImage" src="../images/canyon/1.jpg" alt="Grand Canyon Analysis - Overview">
+                    
+                    <!-- Fullscreen button -->
+                    <button class="fullscreen-btn" id="fullscreenBtn">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+                        </svg>
+                    </button>
+                    
+                    <!-- Navigation arrows -->
+                    <button class="nav-arrow nav-arrow-left" id="prevArrow"></button>
+                    <button class="nav-arrow nav-arrow-right" id="nextArrow"></button>
+                </div>
+            </div>
+
+            <!-- Fullscreen overlay -->
+            <div class="fullscreen-overlay" id="fullscreenOverlay">
+                <img id="fullscreenImage" src="" alt="" class="fullscreen-image">
+                
+                <!-- Fullscreen navigation arrows -->
+                <button class="fullscreen-nav-arrow fullscreen-nav-arrow-left" id="fullscreenPrevArrow"></button>
+                <button class="fullscreen-nav-arrow fullscreen-nav-arrow-right" id="fullscreenNextArrow"></button>
+            </div>
+
+            <!-- Thumbnail strip -->
+            <div class="thumbnail-strip">
+                <div class="thumbnail active" data-slide="0">
+                    <img src="../images/canyon/1.jpg" alt="Overview">
+                </div>
+                <div class="thumbnail" data-slide="1">
+                    <img src="../images/canyon/2.jpg" alt="Geological Study">
+                </div>
+                <div class="thumbnail" data-slide="2">
+                    <img src="../images/canyon/3.jpg" alt="Erosion Patterns">
+                </div>
+                <div class="thumbnail" data-slide="3">
+                    <img src="../images/canyon/4.jpg" alt="Stratification">
+                </div>
+                <div class="thumbnail" data-slide="4">
+                    <img src="../images/canyon/5.jpg" alt="Mapping">
+                </div>
+                <div class="thumbnail" data-slide="5">
+                    <img src="../images/canyon/6.jpg" alt="Visitor Impact">
+                </div>
+                <div class="thumbnail" data-slide="6">
+                    <img src="../images/canyon/7.jpg" alt="Conservation">
+                </div>
+                <div class="thumbnail" data-slide="7">
+                    <img src="../images/canyon/8.jpg" alt="Final Documentation">
+                </div>
+            </div>
+
+            <!-- Project description -->
+            <div class="project-description">
+                <h3>project overview</h3>
+                <p>This comprehensive analysis of the Grand Canyon explores the relationship between geological time, natural processes, and human intervention in one of America's most iconic landscapes. The project examines how millions of years of erosion have created not just a geological wonder, but a complex ecosystem requiring careful stewardship.</p>
+                
+                <p>Through detailed mapping and documentation, the study reveals the canyon's layered history while addressing contemporary challenges of tourism impact, conservation, and sustainable access. The analysis considers both the macro-scale geological processes and micro-scale visitor experiences.</p>
+                
+                <p>The research methodology combines traditional landscape analysis with modern digital mapping techniques, creating a multi-dimensional understanding of how this natural monument continues to evolve under both natural and anthropogenic pressures.</p>
+                
+                <p>The findings contribute to ongoing conservation efforts and inform future management strategies for balancing public access with environmental protection in this UNESCO World Heritage site.</p>
+
+                <!-- Project details -->
+                <div class="project-details">
+                    <div class="detail-item">
+                        <div class="detail-label">Location</div>
+                        <div class="detail-value">Grand Canyon, Arizona</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Year</div>
+                        <div class="detail-value">2023</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Area</div>
+                        <div class="detail-value">1,218,375 acres</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Type</div>
+                        <div class="detail-value">Landscape Analysis</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Status</div>
+                        <div class="detail-value">Research Study</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Collaborators</div>
+                        <div class="detail-value">National Park Service</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ===== SLIDESHOW SYSTEM =====
+        
+        let currentSlideIndex = 0;
+        const totalSlides = 8;
+        const images = [
+            { src: '../images/canyon/1.jpg', alt: 'Grand Canyon Analysis - Overview' },
+            { src: '../images/canyon/2.jpg', alt: 'Grand Canyon Analysis - Geological Study' },
+            { src: '../images/canyon/3.jpg', alt: 'Grand Canyon Analysis - Erosion Patterns' },
+            { src: '../images/canyon/4.jpg', alt: 'Grand Canyon Analysis - Stratification' },
+            { src: '../images/canyon/5.jpg', alt: 'Grand Canyon Analysis - Mapping' },
+            { src: '../images/canyon/6.jpg', alt: 'Grand Canyon Analysis - Visitor Impact' },
+            { src: '../images/canyon/7.jpg', alt: 'Grand Canyon Analysis - Conservation' },
+            { src: '../images/canyon/8.jpg', alt: 'Grand Canyon Analysis - Final Documentation' }
+        ];
+
+        // DOM elements
+        const mainImage = document.getElementById('mainImage');
+        const prevArrow = document.getElementById('prevArrow');
+        const nextArrow = document.getElementById('nextArrow');
+        const thumbnails = document.querySelectorAll('.thumbnail');
+        const fullscreenBtn = document.getElementById('fullscreenBtn');
+        const fullscreenOverlay = document.getElementById('fullscreenOverlay');
+        const fullscreenImage = document.getElementById('fullscreenImage');
+        const fullscreenPrevArrow = document.getElementById('fullscreenPrevArrow');
+        const fullscreenNextArrow = document.getElementById('fullscreenNextArrow');
+
+        // Update display
+        function updateSlide(index) {
+            currentSlideIndex = index;
+            mainImage.src = images[index].src;
+            mainImage.alt = images[index].alt;
+            
+            // Update fullscreen image if it's open
+            if (fullscreenOverlay.classList.contains('active')) {
+                fullscreenImage.src = images[index].src;
+                fullscreenImage.alt = images[index].alt;
+            }
+            
+            // Update thumbnail active state
+            thumbnails.forEach((thumb, i) => {
+                thumb.classList.toggle('active', i === index);
+            });
+        }
+
+        // Navigation functions
+        function nextSlide() {
+            const newIndex = (currentSlideIndex + 1) % totalSlides;
+            updateSlide(newIndex);
+        }
+
+        function prevSlide() {
+            const newIndex = (currentSlideIndex - 1 + totalSlides) % totalSlides;
+            updateSlide(newIndex);
+        }
+
+        // Fullscreen functions
+        function openFullscreen() {
+            fullscreenImage.src = images[currentSlideIndex].src;
+            fullscreenImage.alt = images[currentSlideIndex].alt;
+            fullscreenOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeFullscreen() {
+            fullscreenOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Event listeners
+        prevArrow.addEventListener('click', prevSlide);
+        nextArrow.addEventListener('click', nextSlide);
+        fullscreenBtn.addEventListener('click', openFullscreen);
+        fullscreenPrevArrow.addEventListener('click', prevSlide);
+        fullscreenNextArrow.addEventListener('click', nextSlide);
+
+        // Close fullscreen when clicking on overlay background
+        fullscreenOverlay.addEventListener('click', (e) => {
+            if (e.target === fullscreenOverlay) {
+                closeFullscreen();
+            }
+        });
+
+        // Thumbnail clicks
+        thumbnails.forEach((thumbnail, index) => {
+            thumbnail.addEventListener('click', () => {
+                updateSlide(index);
+            });
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide();
+            } else if (e.key === 'Escape') {
+                closeFullscreen();
+            }
+        });
+    </script>
+</body>
+</html>

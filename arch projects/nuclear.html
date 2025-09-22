@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aaron Cole - 4 Minute Warning</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <div class="page-container">
+         <header class="header">
+    		<a href="../index.html" class="logo">aaron cole</a>
+    		<nav class="nav">
+       		 <div class="dropdown">
+          		 <span class="work-label">work</span> 
+           		 <div class="dropdown-content">
+               		 <a href="../architecture.html" class="active">architecture</a>
+               		 <a href="#photography">photography</a>
+           		 </div>
+       		 </div>
+       		 <a href="#journal">journal</a>
+        		<a href="#info">info</a>
+   		 </nav>
+	</header>
+
+
+        <div class="content-container">
+            <a href="../architecture.html" class="back-button">← architecture</a>
+            
+            <h1 class="project-title">4 Minute Warning</h1>
+            <p class="project-subtitle">Nuclear Test Site Architecture · Nevada, 2023</p>
+
+            <div class="slide-display">
+                <img src="../images/nuclear/1.jpg" alt="4 Minute Warning - Site Overview">
+		<button class="fullscreen-btn" id="fullscreenBtn">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+                        </svg>
+                 </button>
+
+
+            </div>
+
+	    <div class="fullscreen-overlay" id="fullscreenOverlay">
+                <img id="fullscreenImage" src="" alt="" class="fullscreen-image">
+                
+                <!-- Fullscreen navigation arrows -->
+                <button class="fullscreen-nav-arrow fullscreen-nav-arrow-left" id="fullscreenPrevArrow"></button>
+                <button class="fullscreen-nav-arrow fullscreen-nav-arrow-right" id="fullscreenNextArrow"></button>
+            </div>	
+
+            <div class="project-description">
+                <h3>Project Overview</h3>
+                <p>4 Minute Warning explores the architectural legacy of nuclear test sites in the Nevada desert, examining how these spaces of immense destructive power have been transformed over time. The project investigates the relationship between landscape, memory, and the invisible forces that shaped the American West during the Cold War era.</p>
+                
+                <p>Through careful documentation and analysis, this work reveals the complex layers of meaning embedded in these seemingly barren landscapes. The four-minute warning referenced in the title speaks to the brief interval between nuclear alert and impact, a temporal threshold that fundamentally altered human consciousness and spatial planning throughout the 20th century.</p>
+
+                <div class="project-details">
+                    <div class="detail-item">
+                        <div class="detail-label">Location</div>
+                        <div class="detail-value">Nevada Test Site, Nevada</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Year</div>
+                        <div class="detail-value">2023</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Type</div>
+                        <div class="detail-value">Memorial & Research Facility</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Status</div>
+                        <div class="detail-value">Conceptual Study</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<script>
+// single image setup
+ let currentSlideIndex = 0;
+        const images = [
+            { src: '../images/nuclear/1.jpg', alt: '4 Minute Warning - Site Overview' }
+        ];
+
+// DOM elements
+        const mainImage = document.getElementById('mainImage');
+        const prevArrow = document.getElementById('prevArrow');
+        const nextArrow = document.getElementById('nextArrow');
+        const thumbnails = document.querySelectorAll('.thumbnail');
+        const fullscreenBtn = document.getElementById('fullscreenBtn');
+        const fullscreenOverlay = document.getElementById('fullscreenOverlay');
+        const fullscreenImage = document.getElementById('fullscreenImage');
+        const fullscreenPrevArrow = document.getElementById('fullscreenPrevArrow');
+        const fullscreenNextArrow = document.getElementById('fullscreenNextArrow');
+
+// Update display
+        function updateSlide(index) {
+            currentSlideIndex = index;
+            mainImage.src = images[index].src;
+            mainImage.alt = images[index].alt;
+            
+            // Update fullscreen image if it's open
+            if (fullscreenOverlay.classList.contains('active')) {
+                fullscreenImage.src = images[index].src;
+                fullscreenImage.alt = images[index].alt;
+            }
+            
+            // Update thumbnail active state
+            thumbnails.forEach((thumb, i) => {
+                thumb.classList.toggle('active', i === index);
+            });
+        }
+
+
+	// Fullscreen functions
+        function openFullscreen() {
+            fullscreenImage.src = images[currentSlideIndex].src;
+            fullscreenImage.alt = images[currentSlideIndex].alt;
+            fullscreenOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeFullscreen() {
+            fullscreenOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+// Event listeners
+        fullscreenBtn.addEventListener('click', openFullscreen);
+
+// Close fullscreen when clicking on overlay background
+        fullscreenOverlay.addEventListener('click', (e) => {
+            if (e.target === fullscreenOverlay) {
+                closeFullscreen();
+            }
+        });
+
+
+</script>
+</body>
+</html>

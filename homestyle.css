@@ -1,0 +1,300 @@
+/* Base styling - Reset margins/padding for clean start */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+
+
+        /* Body - Full screen with no overflow */
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background: #f5f5f5;
+            overflow-x: hidden;
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Main page container - Full viewport size */
+        .page-container {
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+            background: white;
+            position: relative;
+        }
+
+        /* Header navigation bar - MATCHED TO STYLE.CSS */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 calc(50vw - 520px);
+            background: white;
+            z-index: 100;
+        }
+
+        /* Site logo/name - MATCHED TO STYLE.CSS */
+        .logo {
+            font-size: 20px;
+            font-weight: 400;
+            color: #222;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+        }
+
+        a.logo {
+            text-decoration: none !important;
+        }
+
+        /* Main navigation menu - MATCHED TO STYLE.CSS */
+        .nav {
+            display: flex;
+            gap: 40px;
+        }
+
+        /* Navigation links - MATCHED TO STYLE.CSS */
+        .nav a {
+            color: #222;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 300;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav a:hover {
+            opacity: 0.6;
+        }
+
+        /* Dropdown container */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Work label - no hover effects, not a link - MATCHED TO STYLE.CSS */
+        .work-label {
+            color: #333;
+            font-size: 20px;
+            font-weight: 300;
+            cursor: default;
+            opacity: 1;
+        }
+
+        /* Dropdown content - MATCHED TO STYLE.CSS */
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 120px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            border-radius: 4px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            padding: 8px 0;
+            margin-top: 8px;
+        }
+
+        /* Show dropdown on hover */
+        .dropdown:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* Dropdown links - MATCHED TO STYLE.CSS */
+        .dropdown-content a {
+            display: block;
+            padding: 8px 16px;
+            color: #333;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 300;
+            transition: background-color 0.2s ease;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f8f8f8;
+            opacity: 1;
+        }
+
+        /* Active page indicator - MATCHED TO STYLE.CSS */
+        .dropdown-content a.active {
+            font-weight: 500;
+            color: #333;
+        }
+
+        /* Main gallery container - Adjusted for new header height */
+        .gallery-container {
+            position: absolute;
+            top: 50px; /* Adjusted for new header height */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1040px;
+            height: calc(100vh - 50px); /* Adjusted for new header height */
+            overflow: hidden;
+            background: #fff;
+        }
+
+        /* Gallery track - Contains all photos in a row */
+        .gallery-track {
+            display: flex;
+            height: 100%;
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            will-change: transform;
+        }
+
+        /* Invisible navigation areas on left/right edges */
+        .nav-arrow {
+            position: absolute;
+            top: 50px; /* Adjusted for new header height */
+            width: 100px;
+            height: calc(100vh - 50px); /* Adjusted for new header height */
+            z-index: 200;
+            background: transparent;
+        }
+
+        /* Left arrow zone with custom cursor */
+        .nav-arrow-left {
+            left: calc(50vw - 520px);
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M20 6 L10 16 L20 26" stroke="black" stroke-width="2" fill="none"/></svg>'), auto;
+        }
+
+        /* Right arrow zone with custom cursor */
+        .nav-arrow-right {
+            right: calc(50vw - 520px);
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M12 6 L22 16 L12 26" stroke="black" stroke-width="2" fill="none"/></svg>'), auto;
+        }
+
+        /* Individual photo items - Now as clickable links */
+        .photo-item {
+            flex-shrink: 0;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            transition: filter 0.3s ease;
+            display: block;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Hover effect for photos */
+        .photo-item:hover {
+            filter: brightness(1.05) contrast(1.05);
+        }
+
+        /* Photo width specifications: 1st, 5th, 9th photos are wide (416px) */
+        .photo-item:nth-child(1),
+        .photo-item:nth-child(5),
+        .photo-item:nth-child(9) {
+            width: 416px;
+        }
+
+        /* All other photos are standard width (208px) */
+        .photo-item:nth-child(2),
+        .photo-item:nth-child(3),
+        .photo-item:nth-child(4),
+        .photo-item:nth-child(6),
+        .photo-item:nth-child(7),
+        .photo-item:nth-child(8),
+        .photo-item:nth-child(10),
+        .photo-item:nth-child(11),
+        .photo-item:nth-child(12) {
+            width: 208px;
+        }
+
+        /* Images - Now correctly numbered 1-12 */
+        .photo-item:nth-child(1) { background-image: url('images/dune.jpg'); }
+        .photo-item:nth-child(2) { background-image: url('images/nb-render.png'); }
+        .photo-item:nth-child(3) { background-image: url('images/momastair.jpg'); }
+        .photo-item:nth-child(4) { background-image: url('images/noguchi-render.jpg'); }
+        .photo-item:nth-child(5) { background-image: url('images/composite.png'); }
+        .photo-item:nth-child(6) { background-image: url('images/mountains.jpg'); }
+        .photo-item:nth-child(7) { background-image: url('images/nb-plan.png'); }
+        .photo-item:nth-child(8) { background-image: url('images/finalmodel-1.jpg'); }
+        .photo-item:nth-child(9) { background-image: url('images/exterior-render.jpg'); }
+        .photo-item:nth-child(10) { background-image: url('images/wall-sections.jpg'); }
+        .photo-item:nth-child(11) { background-image: url('images/candle.jpg'); }
+        .photo-item:nth-child(12) { background-image: url('images/lantern.jpg'); }
+
+        /* Photo overlay - Shows on hover with project info */
+        .photo-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        /* Show overlay on photo hover */
+        .photo-item:hover .photo-overlay {
+            transform: translateY(0);
+        }
+
+        /* Project title in overlay - MATCHED TO STYLE.CSS TEXT SIZES */
+        .photo-title {
+            font-size: 14px;
+            font-weight: 250;
+            margin-bottom: 5px;
+            color: white;
+        }
+
+        /* Project subtitle in overlay - MATCHED TO STYLE.CSS TEXT SIZES */
+        .photo-subtitle {
+            font-size: 14px;
+            opacity: 0.8;
+            font-weight: 300;
+            color: white;
+        }
+
+        /* Responsive adjustments - MATCHED TO STYLE.CSS */
+        @media screen and (max-width: 1200px) {
+            .header {
+                padding: 0 40px;
+            }
+            
+            .gallery-container {
+                left: 50%;
+                transform: translateX(-50%);
+                width: calc(100vw - 80px);
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .header {
+                padding: 0 20px;
+            }
+
+            .gallery-container {
+                left: 50%;
+                transform: translateX(-50%);
+                width: calc(100vw - 40px);
+            }
+
+            .nav {
+                gap: 20px;
+            }
+
+            .nav a {
+                font-size: 14px;
+            }
+        }

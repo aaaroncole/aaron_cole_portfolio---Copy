@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aaron Cole - Portfolio</title>
+    <link rel="stylesheet" href="homestyle.css">
+    
+</head>
+<body>
+    <div class="page-container">
+        <header class="header">
+            <a href="index.html" class="logo">aaron cole</a>
+		<nav class="nav">
+    		<div class="dropdown">
+       		<span class="work-label">work</span> 
+        		<div class="dropdown-content">
+            			<a href="architecture.html">architecture</a>
+           			 <a href="#photography">photography</a>
+        		</div>
+    		</div>
+    		<a href="#journal">journal</a>
+    		<a href="#info">info</a>
+		</nav>
+        </header>
+
+        <!-- Navigation arrows positioned outside the gallery track -->
+        <div class="nav-arrow nav-arrow-left" id="prevArrow"></div>
+        <div class="nav-arrow nav-arrow-right" id="nextArrow"></div>
+
+        <div class="gallery-container" id="gallery">
+            <div class="gallery-track" id="track">
+                <!-- Photo 1: Wide format (416px) -->
+                <a href="arch projects/canyon.html" class="photo-item">
+                    <div class="photo-overlay">
+                        <div class="photo-title">DUNE</div>
+                        <div class="photo-subtitle">Great Sand Dunes National Park</div>
+                    </div>
+                </a>
+                
+                <!-- Photo 2: Standard format (208px) -->
+                <a href="arch projects/nuclear.html" class="photo-item">
+                    <div class="photo-overlay">
+                        <div class="photo-title">4 Minute Warning</div>
+                        <div class="photo-subtitle">Nuclear Test Site</div>
+                    </div>
+                </a>
+                
+                <!-- Photo 3: Standard format (208px) -->
+                <a href="#photography" class="photo-item">
+                    <div class="photo-overlay">
+                        <div class="photo-title">The American West</div>
+                        <div class="photo-subtitle">Photography</div>
+                    </div>
+                </a>
+                
+                <!-- Photo 4: Standard format (208px) -->
+                <a href="arch projects/noguchi.html" class="photo-item">
+                    <div class="photo-overlay">
+                        <div class="photo-title">Noguchi Extension</div>
+                        <div class="photo-subtitle">New York, New York</div>
+                    </div>
+                </a>
+                
+                <!-- Photo 5: Wide format (416px) -->
+                <a href="arch projects/canyon.html" class="photo-item">
+                    <div class="photo-overlay">
+                        <div class="photo-title">Grand Canyon Analysis</div>
+                        <div class="photo-subtitle">Grand Canyon, Arizona</div>
+                    </div>
+                </a>
+                
+                <!-- Photo 6: Standard format (208px) -->
+                <a href="#photography" class="photo-item">
+                    <div class="photo-overlay">
+                        <div class="photo-title">The American West</div>
+                        <div class="photo-subtitle">Colorado, USA</div>
+                    </div>
+                </a>
+                
+                <!-- Photo 7: Standard format (208px) -->
+                <a href="arch projects/nuclear.html" class="photo-item">
+                    <div class="photo-overlay">
+                        <div class="photo-title">4 Minute Warning</div>
+                        <div class="photo-subtitle">Nuclear Test Site</div>
+                    </div>
+                </a>
+                
+                <!-- Photo 8: Standard format (208px) -->
+                <a href="arch projects/hudson.html" class="photo-item">
+                    <div class="photo-overlay">
+                        <div class="photo-title">Hudson Housing Project</div>
+                        <div class="photo-subtitle">Hudson, New York</div>
+                    </div>
+                </a>
+                
+                <!-- Photo 9: Wide format (416px) -->
+                <a href="arch projects/noguchi.html" class="photo-item">
+                    <div class="photo-overlay">
+                        <div class="photo-title">Noguchi Extension</div>
+                        <div class="photo-subtitle">New York, New York</div>
+                    </div>
+                </a>
+                
+                <!-- Photo 10: Standard format (208px) -->
+                <a href="arch projects/noguchi.html" class="photo-item">
+                    <div class="photo-overlay">
+                        <div class="photo-title">Noguchi Extension</div>
+                        <div class="photo-subtitle">New York, New York</div>
+                    </div>
+                </a>
+                
+                <!-- Photo 11: Standard format (208px) -->
+                <a href="arch projects/canyon.html" class="photo-item">
+                    <div class="photo-overlay">
+                        <div class="photo-title">Grand Canyon Analysis</div>
+                        <div class="photo-subtitle">Grand Canyon, Arizona</div>
+                    </div>
+                </a>
+                
+                <!-- Photo 12: Standard format (208px) -->
+                <a href="arch projects/canyon.html" class="photo-item">
+                    <div class="photo-overlay">
+                        <div class="photo-title">DUNE</div>
+                        <div class="photo-subtitle">Great Sand Dunes National Park</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ===== GALLERY NAVIGATION SYSTEM =====
+        
+        // Get DOM elements
+        const track = document.getElementById('track');           
+        const prevArrow = document.getElementById('prevArrow');   
+        const nextArrow = document.getElementById('nextArrow');   
+        
+        // Current photo index (0-11 for 12 photos)
+        let currentIndex = 0;
+
+        // Photo width configuration (in pixels)
+        const photoWidths = [416, 208, 208, 208, 416, 208, 208, 208, 416, 208, 208, 208];
+        
+        // Calculate total width of all photos combined
+        const totalWidth = photoWidths.reduce((sum, width) => sum + width, 0);
+        
+        // Gallery container width (visible area)
+        const containerWidth = 1040;
+        
+        // Calculate the starting position for each photo
+        const photoPositions = [];
+        let cumulativeWidth = 0;
+        for (let i = 0; i < photoWidths.length; i++) {
+            photoPositions.push(cumulativeWidth);
+            cumulativeWidth += photoWidths[i];
+        }
+
+        // ===== GALLERY UPDATE FUNCTION =====
+        function updateGallery() {
+            const maxScroll = totalWidth - containerWidth;
+            const scrollPosition = Math.min(photoPositions[currentIndex], maxScroll);
+            track.style.transform = `translateX(-${scrollPosition}px)`;
+            console.log(`Photo ${currentIndex + 1} of 12, scroll: ${scrollPosition}px`);
+        }
+
+        // ===== NAVIGATION FUNCTIONS =====
+        function nextPhoto() {
+            if (currentIndex < photoWidths.length - 1) {
+                currentIndex++;
+                updateGallery();
+            }
+        }
+
+        function prevPhoto() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateGallery();
+            }
+        }
+
+        // ===== EVENT LISTENERS =====
+        nextArrow.addEventListener('click', nextPhoto);
+        prevArrow.addEventListener('click', prevPhoto);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') {
+                nextPhoto();
+            } else if (e.key === 'ArrowLeft') {
+                prevPhoto();
+            }
+        });
+
+        // ===== INITIALIZE GALLERY =====
+        updateGallery();
+    </script>
+</body>
+</html>

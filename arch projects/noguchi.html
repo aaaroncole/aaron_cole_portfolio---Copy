@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aaron Cole - Noguchi Extension</title>
+       <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <div class="page-container">
+         <header class="header">
+    		<a href="../index.html" class="logo">aaron cole</a>
+    		<nav class="nav">
+       		 <div class="dropdown">
+          		 <span class="work-label">work</span> 
+           		 <div class="dropdown-content">
+               		 <a href="../architecture.html" class="active">architecture</a>
+               		 <a href="#photography">photography</a>
+           		 </div>
+       		 </div>
+       		 <a href="#journal">journal</a>
+        		<a href="#info">info</a>
+   		 </nav>
+	</header>
+
+
+        <div class="content-container">
+            <a href="../architecture.html" class="back-button">← architecture</a>
+            
+            <h1 class="project-title">Noguchi Extension</h1>
+            <p class="project-subtitle">Museum Architecture · New York, 2023</p>
+
+            <!-- Slideshow -->
+            <div class="slideshow-container">
+                <!-- Main slide display -->
+                <div class="slide-display">
+                    <img id="mainImage" src="../images/noguchi/1.jpg" alt="Noguchi Extension - Exterior View">
+                    
+                    <!-- Fullscreen button -->
+                    <button class="fullscreen-btn" id="fullscreenBtn">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+                        </svg>
+                    </button>
+                    
+                    <!-- Navigation arrows -->
+                    <button class="nav-arrow nav-arrow-left" id="prevArrow"></button>
+                    <button class="nav-arrow nav-arrow-right" id="nextArrow"></button>
+                </div>
+            </div>
+
+            <!-- Fullscreen overlay -->
+            <div class="fullscreen-overlay" id="fullscreenOverlay">
+                <img id="fullscreenImage" src="" alt="" class="fullscreen-image">
+                
+                <!-- Fullscreen navigation arrows -->
+                <button class="fullscreen-nav-arrow fullscreen-nav-arrow-left" id="fullscreenPrevArrow"></button>
+                <button class="fullscreen-nav-arrow fullscreen-nav-arrow-right" id="fullscreenNextArrow"></button>
+            </div>
+
+            <!-- Thumbnail strip -->
+            <div class="thumbnail-strip">
+                <div class="thumbnail active" data-slide="0">
+                    <img src="../images/noguchi/1.jpg" alt="Exterior View">
+                </div>
+                <div class="thumbnail" data-slide="1">
+                    <img src="../images/noguchi/2.jpg" alt="Interior Gallery">
+                </div>
+                <div class="thumbnail" data-slide="2">
+                    <img src="../images/noguchi/3.jpg" alt="Garden Integration">
+                </div>
+                <div class="thumbnail" data-slide="3">
+                    <img src="../images/noguchi/4.jpg" alt="Night View">
+                </div>
+                <div class="thumbnail" data-slide="4">
+                    <img src="../images/noguchi/5.jpg" alt="Courtyard">
+                </div>
+                <div class="thumbnail" data-slide="5">
+                    <img src="../images/noguchi/6.jpg" alt="Exhibition Space">
+                </div>
+                <div class="thumbnail" data-slide="6">
+                    <img src="../images/noguchi/7.jpg" alt="Entrance">
+                </div>
+                <div class="thumbnail" data-slide="7">
+                    <img src="../images/noguchi/8.jpg" alt="Material Detail">
+                </div>
+                <div class="thumbnail" data-slide="8">
+                    <img src="../images/noguchi/9.jpg" alt="Site Plan">
+                </div>
+                <div class="thumbnail" data-slide="9">
+                    <img src="../images/noguchi/10.jpg" alt="Architectural Drawings">
+                </div>
+                <div class="thumbnail" data-slide="10">
+                    <img src="../images/noguchi/11.jpg" alt="Model Studies">
+                </div>
+                <div class="thumbnail" data-slide="11">
+                    <img src="../images/noguchi/12.jpg" alt="Construction Details">
+                </div>
+                <div class="thumbnail" data-slide="12">
+                    <img src="../images/noguchi/13.jpg" alt="Landscape Views">
+                </div>
+                <div class="thumbnail" data-slide="13">
+                    <img src="../images/noguchi/14.jpg" alt="Interior Perspective">
+                </div>
+                <div class="thumbnail" data-slide="14">
+                    <img src="../images/noguchi/15.jpg" alt="Gallery Sequence">
+                </div>
+                <div class="thumbnail" data-slide="15">
+                    <img src="../images/noguchi/16.jpg" alt="Final Presentation">
+                </div>
+                <div class="thumbnail" data-slide="16">
+                    <img src="../images/noguchi/17.jpg" alt="Context Analysis">
+                </div>
+                <div class="thumbnail" data-slide="17">
+                    <img src="../images/noguchi/18.jpg" alt="Final Documentation">
+                </div>
+            </div>
+
+            <!-- Project description -->
+            <div class="project-description">
+                <h3>Project Overview</h3>
+                <p>The Noguchi Extension represents a thoughtful addition to the renowned Noguchi Museum in Queens, New York. This project sought to expand the museum's capacity while maintaining the intimate, contemplative atmosphere that defines Isamu Noguchi's vision for the space.</p>
+                
+                <p>The extension seamlessly integrates with the existing museum structure, utilizing a palette of concrete, steel, and glass that references Noguchi's sculptural materials. The new wing houses contemporary exhibitions while providing enhanced visitor amenities and educational spaces.</p>
+                
+                <p>A key design element is the integration of the building with the museum's sculpture garden. Large, strategically placed openings frame views of both interior and exterior sculptures, creating a continuous dialogue between built and landscape environments.</p>
+                
+                <p>Sustainable design principles were incorporated throughout, including natural ventilation systems, rainwater collection, and locally sourced materials that reduce the building's environmental impact while honoring the museum's commitment to artistic and environmental stewardship.</p>
+
+                <!-- Project details -->
+                <div class="project-details">
+                    <div class="detail-item">
+                        <div class="detail-label">Location</div>
+                        <div class="detail-value">Long Island City, NY</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Year</div>
+                        <div class="detail-value">2023</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Area</div>
+                        <div class="detail-value">8,500 sq ft</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Type</div>
+                        <div class="detail-value">Museum Extension</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Status</div>
+                        <div class="detail-value">Conceptual Design</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Collaborators</div>
+                        <div class="detail-value">Studio Team</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ===== SLIDESHOW SYSTEM =====
+        
+        let currentSlideIndex = 0;
+        const totalSlides = 18;
+        const images = [
+            { src: '../images/noguchi/1.jpg', alt: 'Noguchi Extension - Exterior View' },
+            { src: '../images/noguchi/2.jpg', alt: 'Noguchi Extension - Interior Gallery' },
+            { src: '../images/noguchi/3.jpg', alt: 'Noguchi Extension - Garden Integration' },
+            { src: '../images/noguchi/4.jpg', alt: 'Noguchi Extension - Night View' },
+            { src: '../images/noguchi/5.jpg', alt: 'Noguchi Extension - Courtyard' },
+            { src: '../images/noguchi/6.jpg', alt: 'Noguchi Extension - Exhibition Space' },
+            { src: '../images/noguchi/7.jpg', alt: 'Noguchi Extension - Entrance' },
+            { src: '../images/noguchi/8.jpg', alt: 'Noguchi Extension - Material Detail' },
+            { src: '../images/noguchi/9.jpg', alt: 'Noguchi Extension - Site Plan' },
+            { src: '../images/noguchi/10.jpg', alt: 'Noguchi Extension - Architectural Drawings' },
+            { src: '../images/noguchi/11.jpg', alt: 'Noguchi Extension - Model Studies' },
+            { src: '../images/noguchi/12.jpg', alt: 'Noguchi Extension - Construction Details' },
+            { src: '../images/noguchi/13.jpg', alt: 'Noguchi Extension - Landscape Views' },
+            { src: '../images/noguchi/14.jpg', alt: 'Noguchi Extension - Interior Perspective' },
+            { src: '../images/noguchi/15.jpg', alt: 'Noguchi Extension - Gallery Sequence' },
+            { src: '../images/noguchi/16.jpg', alt: 'Noguchi Extension - Final Presentation' },
+            { src: '../images/noguchi/17.jpg', alt: 'Noguchi Extension - Context Analysis' },
+            { src: '../images/noguchi/18.jpg', alt: 'Noguchi Extension - Final Documentation' }
+        ];
+
+        // DOM elements
+        const mainImage = document.getElementById('mainImage');
+        const prevArrow = document.getElementById('prevArrow');
+        const nextArrow = document.getElementById('nextArrow');
+        const thumbnails = document.querySelectorAll('.thumbnail');
+        const fullscreenBtn = document.getElementById('fullscreenBtn');
+        const fullscreenOverlay = document.getElementById('fullscreenOverlay');
+        const fullscreenImage = document.getElementById('fullscreenImage');
+        const fullscreenPrevArrow = document.getElementById('fullscreenPrevArrow');
+        const fullscreenNextArrow = document.getElementById('fullscreenNextArrow');
+
+        // Update display
+        function updateSlide(index) {
+            currentSlideIndex = index;
+            mainImage.src = images[index].src;
+            mainImage.alt = images[index].alt;
+            
+            // Update fullscreen image if it's open
+            if (fullscreenOverlay.classList.contains('active')) {
+                fullscreenImage.src = images[index].src;
+                fullscreenImage.alt = images[index].alt;
+            }
+            
+            // Update thumbnail active state
+            thumbnails.forEach((thumb, i) => {
+                thumb.classList.toggle('active', i === index);
+            });
+        }
+
+        // Navigation functions
+        function nextSlide() {
+            const newIndex = (currentSlideIndex + 1) % totalSlides;
+            updateSlide(newIndex);
+        }
+
+        function prevSlide() {
+            const newIndex = (currentSlideIndex - 1 + totalSlides) % totalSlides;
+            updateSlide(newIndex);
+        }
+
+        // Fullscreen functions
+        function openFullscreen() {
+            fullscreenImage.src = images[currentSlideIndex].src;
+            fullscreenImage.alt = images[currentSlideIndex].alt;
+            fullscreenOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeFullscreen() {
+            fullscreenOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Event listeners
+        prevArrow.addEventListener('click', prevSlide);
+        nextArrow.addEventListener('click', nextSlide);
+        fullscreenBtn.addEventListener('click', openFullscreen);
+        fullscreenPrevArrow.addEventListener('click', prevSlide);
+        fullscreenNextArrow.addEventListener('click', nextSlide);
+
+        // Close fullscreen when clicking on overlay background
+        fullscreenOverlay.addEventListener('click', (e) => {
+            if (e.target === fullscreenOverlay) {
+                closeFullscreen();
+            }
+        });
+
+        // Thumbnail clicks
+        thumbnails.forEach((thumbnail, index) => {
+            thumbnail.addEventListener('click', () => {
+                updateSlide(index);
+            });
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide();
+            } else if (e.key === 'Escape') {
+                closeFullscreen();
+            }
+        });
+    </script>
+</body>
+</html>
