@@ -1,0 +1,342 @@
+ /* Base styling - Reset margins/padding for clean start */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body - Full screen with no overflow */
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background: #f5f5f5;
+            overflow-x: hidden;
+            width: 100vw;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Main page container */
+        .page-container {
+            width: 100vw;
+            min-height: 100vh;
+            margin: 0;
+            background: white;
+            position: relative;
+        }
+
+        /* Header navigation bar */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 calc(50vw - 520px);
+            background: white;
+            z-index: 100;
+            width: 100vw;
+        }
+
+        /* Site logo/name */
+        .logo {
+            font-size: 20px;
+            font-weight: 400;
+            color: #222;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+        }
+
+        a.logo {
+            text-decoration: none !important;
+        }
+
+        /* Main navigation menu */
+        .nav {
+            display: flex;
+            gap: 40px;
+        }
+
+        /* Navigation links */
+        .nav a {
+            color: #222;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 300;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav a:hover {
+            opacity: 0.6;
+        }
+
+        /* Dropdown container */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Work label - no hover effects, not a link */
+        .work-label {
+            color: #333;
+            font-size: 20px;
+            font-weight: 300;
+            cursor: default;
+            opacity: 1;
+        }
+
+        /* Dropdown content */
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 120px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            border-radius: 4px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            padding: 8px 0;
+            margin-top: 8px;
+        }
+
+        /* Show dropdown on hover */
+        .dropdown:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* Dropdown links */
+        .dropdown-content a {
+            display: block;
+            padding: 8px 16px;
+            color: #333;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 300;
+            transition: background-color 0.2s ease;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f8f8f8;
+            opacity: 1;
+        }
+
+        /* Active page indicator */
+        .dropdown-content a.active {
+            font-weight: 500;
+            color: #333;
+        }
+
+        /* Main content area */
+        .content-container {
+            margin-top: -10px;
+            padding: 60px calc(50vw - 520px);
+            max-width: 100%;
+        }
+
+        /* Back button */
+        .back-button {
+            display: inline-block;
+            margin-bottom: 15px;
+            padding: 0px 0px;
+            background: transparent;
+            color: #333;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 100;
+            border-radius: 4px;
+            transition: background 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: transparent;
+        }
+
+        /* Project header */
+        .project-header {
+            margin-bottom: 40px;
+        }
+
+        .project-title {
+            font-size: 18px;
+            font-weight: 250;
+            color: #333;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .project-meta {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            color: #444;
+            font-weight: 150;
+            letter-spacing: 0.5px;
+            text-align: center;
+        }
+
+        .project-description {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .project-description p {
+            margin-bottom: 20px;
+        }
+
+        .project-description p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Photo grid - MASONRY LAYOUT */
+        .photo-grid {
+            column-count: 2;
+            column-gap: 30px;
+            margin-top: 40px;
+        }
+
+        @supports (grid-template-rows: masonry) {
+            .photo-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: masonry;
+                gap: 30px;
+                column-count: unset;
+                column-gap: unset;
+            }
+        }
+
+        .photo-item {
+            display: flex;
+            flex-direction: column;
+            break-inside: avoid;
+            page-break-inside: avoid;
+            margin-bottom: 30px;
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .photo-item img:hover {
+            transform: scale(1.02);
+        }
+
+        .photo-caption {
+            margin-top: 8px;
+            font-size: 12px;
+            color: #999;
+            font-weight: 300;
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+
+        /* Fullscreen overlay */
+        .fullscreen-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .fullscreen-overlay.active {
+            display: flex;
+        }
+
+        .fullscreen-image {
+            max-width: 95vw;
+            max-height: 95vh;
+            object-fit: contain;
+        }
+
+        /* Responsive adjustments */
+        @media screen and (max-width: 1200px) {
+            .header {
+                padding: 0 40px;
+            }
+            
+            .content-container {
+                padding: 60px 40px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .header {
+                padding: 0 20px;
+            }
+
+            .content-container {
+                padding: 40px 20px;
+            }
+
+            .project-title {
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+
+            .project-meta {
+                font-size: 16px;
+                margin-bottom: 20px;
+                flex-direction: column;
+                gap: 4px;
+            }
+
+            .nav {
+                gap: 20px;
+            }
+
+            .nav a {
+                font-size: 14px;
+            }
+
+            .photo-grid {
+                column-count: 1;
+                gap: 24px;
+                margin-top: 30px;
+            }
+
+            @supports (grid-template-rows: masonry) {
+                .photo-grid {
+                    grid-template-columns: 1fr;
+                    gap: 24px;
+                    column-count: unset;
+                }
+            }
+
+            .photo-item {
+                margin-bottom: 24px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .photo-grid {
+                column-count: 1;
+            }
+            
+            .photo-item {
+                margin-bottom: 20px;
+            }
+        }

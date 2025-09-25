@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aaron Cole - DUNE</title>
+    <link rel="stylesheet" href="../photostyle.css">
+</head>
+<body>
+    <div class="page-container">
+        <header class="header">
+            <a href="../index.html" class="logo">aaron cole</a>
+            <nav class="nav">
+                <div class="dropdown">
+                    <span class="work-label">work</span> 
+                    <div class="dropdown-content">
+                        <a href="../architecture.html">architecture</a>
+                        <a href="../photography.html" class="active">photography</a>
+                    </div>
+                </div>
+                <a href="#journal">journal</a>
+                <a href="#info">info</a>
+            </nav>
+        </header>
+
+        <div class="content-container">
+            <a href="../photography.html" class="back-button">← photography</a>
+            
+            <div class="project-header">
+                <h1 class="project-title">DUNE</h1>
+                <div class="project-meta">
+                    <span>great sand dunes national park</span>
+                    <span>•</span>
+                    <span>summer 2024</span>
+                </div>
+                <div class="project-description">
+                    <p>A collection capturing the spontaneous beauty found in everyday street life across Brooklyn neighborhoods. These images explore the intersection of light, movement, and human connection in urban spaces.</p>
+                    <p>Shot over several months during different seasons, the series documents how the same streets transform with changing weather, time of day, and the rhythms of city life. Each photograph seeks to find poetry in the ordinary moments that often go unnoticed.</p>
+                </div>
+            </div>
+
+            <!-- Photo Grid -->
+            <div class="photo-grid">
+                <div class="photo-item">
+                    <img src="../images/p-dune/1.jpg" alt="Morning commute on Atlantic Avenue">
+                    <div class="photo-caption">morning commute on atlantic avenue</div>
+                </div>
+
+                <div class="photo-item">
+                    <img src="../images/p-dune/2.jpg" alt="Corner bodega reflections">
+                    <div class="photo-caption">corner bodega reflections</div>
+                </div>
+
+                <div class="photo-item">
+                    <img src="../images/p-dune/3.jpg" alt="Afternoon shadows in Prospect Park">
+                    <div class="photo-caption">afternoon shadows in prospect park</div>
+                </div>
+
+                <div class="photo-item">
+                    <img src="../images/p-dune/4.jpg" alt="Subway platform waiting">
+                    <div class="photo-caption">subway platform waiting</div>
+                </div>
+
+                <div class="photo-item">
+                    <img src="../images/p-dune/5.jpg" alt="Evening light through fire escape">
+                    <div class="photo-caption">evening light through fire escape</div>
+                </div>
+
+                <div class="photo-item">
+                    <img src="../images/p-dune/6.jpg" alt="Weekend market bustle">
+                    <div class="photo-caption">weekend market bustle</div>
+                </div>
+
+                <div class="photo-item">
+                    <img src="../images/p-dune/7.jpg" alt="Weekend market bustle">
+                    <div class="photo-caption">weekend market bustle</div>
+                </div>
+
+                <div class="photo-item">
+                    <img src="../images/p-dune/8.jpg" alt="Weekend market bustle">
+                    <div class="photo-caption">weekend market bustle</div>
+                </div>
+
+                <div class="photo-item">
+                    <img src="../images/p-dune/9.jpg" alt="Weekend market bustle">
+                    <div class="photo-caption">weekend market bustle</div>
+                </div>
+
+                <div class="photo-item">
+                    <img src="../images/p-dune/10.jpg" alt="Weekend market bustle">
+                    <div class="photo-caption">weekend market bustle</div>
+                </div>
+
+                <div class="photo-item">
+                    <img src="../images/p-dune/11.jpg" alt="Weekend market bustle">
+                    <div class="photo-caption">weekend market bustle</div>
+                </div>
+
+
+                <div class="photo-item">
+                    <img src="../images/p-dune/12.jpg" alt="Weekend market bustle">
+                    <div class="photo-caption">weekend market bustle</div>
+
+               
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fullscreen overlay -->
+    <div class="fullscreen-overlay" id="fullscreenOverlay">
+        <img id="fullscreenImage" src="" alt="" class="fullscreen-image">
+    </div>
+
+    <script>
+        // ===== FULLSCREEN FUNCTIONALITY =====
+        
+        const fullscreenOverlay = document.getElementById('fullscreenOverlay');
+        const fullscreenImage = document.getElementById('fullscreenImage');
+        const photoImages = document.querySelectorAll('.photo-item img');
+
+        // Add click listeners to all photos
+        photoImages.forEach(img => {
+            img.addEventListener('click', () => {
+                openFullscreen(img.src, img.alt);
+            });
+        });
+
+        function openFullscreen(src, alt) {
+            fullscreenImage.src = src;
+            fullscreenImage.alt = alt;
+            fullscreenOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeFullscreen() {
+            fullscreenOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close fullscreen when clicking on overlay background
+        fullscreenOverlay.addEventListener('click', (e) => {
+            if (e.target === fullscreenOverlay) {
+                closeFullscreen();
+            }
+        });
+
+        // Close fullscreen with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeFullscreen();
+            }
+        });
+    </script>
+</body>
+</html>

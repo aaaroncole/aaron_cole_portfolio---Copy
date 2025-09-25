@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aaron Cole - Photography</title>
+    <style>
+        /* Base styling - Reset margins/padding for clean start */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body - Full screen with no overflow */
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background: #f5f5f5;
+            overflow-x: hidden;
+            width: 100vw;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Main page container */
+        .page-container {
+            width: 100vw;
+            min-height: 100vh;
+            margin: 0;
+            background: white;
+            position: relative;
+        }
+
+        /* Header navigation bar */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 calc(50vw - 520px);
+            background: white;
+            z-index: 100;
+            width: 100vw;
+        }
+
+        /* Site logo/name */
+        .logo {
+            font-size: 20px;
+            font-weight: 400;
+            color: #222;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+        }
+
+        a.logo {
+            text-decoration: none !important;
+        }
+
+        /* Main navigation menu */
+        .nav {
+            display: flex;
+            gap: 40px;
+        }
+
+        /* Navigation links */
+        .nav a {
+            color: #222;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 300;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav a:hover {
+            opacity: 0.6;
+        }
+
+        /* Dropdown container */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Work label - no hover effects, not a link */
+        .work-label {
+            color: #333;
+            font-size: 20px;
+            font-weight: 300;
+            cursor: default;
+            opacity: 1;
+        }
+
+        /* Dropdown content */
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 120px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            border-radius: 4px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            padding: 8px 0;
+            margin-top: 8px;
+        }
+
+        /* Show dropdown on hover */
+        .dropdown:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* Dropdown links */
+        .dropdown-content a {
+            display: block;
+            padding: 8px 16px;
+            color: #333;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 300;
+            transition: background-color 0.2s ease;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f8f8f8;
+            opacity: 1;
+        }
+
+        /* Active page indicator */
+        .dropdown-content a.active {
+            font-weight: 500;
+            color: #333;
+        }
+
+        /* Main content area */
+        .content-container {
+            margin-top: -10px;
+            padding: 60px calc(50vw - 520px);
+            max-width: 100%;
+        }
+
+        /* Page title */
+        .page-title {
+            font-size: 18px;
+            font-weight: 250;
+            color: #333;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        /* Photography-specific styles */
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            width: 100%;
+            margin-top: 40px;
+            align-items: start;
+            grid-auto-flow: dense;
+        }
+
+        /* Photo project container - strict max height */
+        .photo-project {
+            position: relative;
+            width: 100%;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            overflow: hidden;
+            display: block;
+            height: 300px;
+            max-height: 300px;
+        }
+
+        /* Landscape photos span 2 columns with same height as regular photos */
+        .photo-project.landscape {
+            grid-column: span 2;
+            height: 300px;
+            max-height: 300px;
+        }
+
+        .photo-project:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Photo image styling - crop to fill container with zoom priority */
+        .photo-image {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            object-position: center;
+            transition: filter 0.3s ease;
+            min-height: 100%;
+        }
+
+        .photo-project:hover .photo-image {
+            filter: brightness(1.05);
+        }
+
+        /* Photo info overlay - appears on hover */
+        .photo-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            color: white;
+            padding: 16px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .photo-project:hover .photo-info {
+            transform: translateY(0);
+        }
+
+        /* Photo project name */
+        .photo-name {
+            font-size: 16px;
+            font-weight: 300;
+            margin-bottom: 4px;
+            color: white;
+        }
+
+        /* Photo project type/description */
+        .photo-type {
+            font-size: 13px;
+            font-weight: 300;
+            opacity: 0.9;
+            color: white;
+        }
+
+        /* Responsive adjustments */
+        @media screen and (max-width: 1200px) {
+            .header {
+                padding: 0 40px;
+            }
+            
+            .content-container {
+                padding: 60px 40px;
+            }
+
+            .photo-gallery {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 25px;
+            }
+
+            .photo-project {
+                height: 250px;
+                max-height: 250px;
+            }
+
+            .photo-project.landscape {
+                grid-column: span 2;
+                height: 250px;
+                max-height: 250px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .header {
+                padding: 0 20px;
+            }
+
+            .content-container {
+                padding: 40px 20px;
+            }
+
+            .page-title {
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+
+            .nav {
+                gap: 20px;
+            }
+
+            .nav a {
+                font-size: 14px;
+            }
+
+            .photo-gallery {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .photo-project {
+                height: 200px;
+                max-height: 200px;
+            }
+
+            .photo-project.landscape {
+                grid-column: span 1;
+                height: 200px;
+                max-height: 200px;
+            }
+
+            .photo-info {
+                padding: 12px;
+            }
+
+            .photo-name {
+                font-size: 14px;
+            }
+
+            .photo-type {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <header class="header">
+            <a href="index.html" class="logo">aaron cole</a>
+            <nav class="nav">
+                <div class="dropdown">
+                    <span class="work-label">work</span> 
+                    <div class="dropdown-content">
+                        <a href="architecture.html">architecture</a>
+                        <a href="photography.html" class="active">photography</a>
+                    </div>
+                </div>
+                <a href="#journal">journal</a>
+                <a href="#info">info</a>
+            </nav>
+        </header>
+
+        <div class="content-container">
+            <h1 class="page-title">photography</h1>
+            
+            <div class="photo-gallery">
+                <!-- Photo Project 1: DUNE -->
+                <a href="photo projects/dune.html" class="photo-project">
+                    <img src="images/p-dune/1.jpg" alt="Street Photography Series" class="photo-image">
+                    <div class="photo-info">
+                        <div class="photo-name">DUNE</div>
+                
+                    </div>
+                </a>
+
+                <!-- Photo Project 2: Portraits -->
+                <a href="photo projects/arches.html" class="photo-project">
+                    <img src="images/p-arches/1.jpg" alt="Portrait Series" class="photo-image">
+                    <div class="photo-info">
+                        <div class="photo-name">The Delicate Arch and Its Surrounding Shrines</div>
+                       
+                    </div>
+                </a>
+
+                <!-- Photo Project 3: Landscape -->
+                <a href="photo projects/monument valley.html" class="photo-project">
+                    <img src="images/p-monument valley/1.jpg" alt="Landscape Photography" class="photo-image">
+                    <div class="photo-info">
+                        <div class="photo-name">Tsé Biiʼ Ndzisgaii</div>
+                     
+                    </div>
+                </a>
+
+                <!-- Photo Project 4: Architecture Photography -->
+                <a href="photo projects/archphoto.html" class="photo-project">
+                    <img src="images/p-camping/1.jpg" alt="Architecture Photography" class="photo-image">
+                    <div class="photo-info">
+                        <div class="photo-name">Camping With Will</div>
+                      
+                    </div>
+                </a>
+
+                <!-- Photo Project 5: Abstract -->
+                <a href="photo projects/flight.html" class="photo-project">
+                    <img src="images/p-flight/1.jpg" alt="Abstract Photography" class="photo-image">
+                    <div class="photo-info">
+                        <div class="photo-name">UA 1095</div>
+                      
+                    </div>
+                </a>
+
+                <!-- Photo Project 6: Documentary -->
+                <a href="photo projects/documentary.html" class="photo-project">
+                    <img src="images/p-golden gate/1.jpg" alt="Documentary Photography" class="photo-image">
+                    <div class="photo-info">
+                        <div class="photo-name">Golden Gate</div>
+                     
+                    </div>
+
+                </a>
+                <!-- Photo Project 7: Documentary -->
+                <a href="photo projects/ontario.html" class="photo-project">
+                    <img src="images/p-ontario/1.jpg" alt="Documentary Photography" class="photo-image">
+                    <div class="photo-info">
+                        <div class="photo-name">A Frozen Over Lake Ontario</div>
+                 
+                    </div>
+
+                </a>
+                <!-- Photo Project 8: Documentary -->
+                <a href="photo projects/indiancreek.html" class="photo-project">
+                    <img src="images/p-indian creek/9.jpg" alt="Documentary Photography" class="photo-image">
+                    <div class="photo-info">
+                        <div class="photo-name">Indian Creek</div>
+                        
+                    </div>
+
+                </a>
+                <!-- Photo Project 9: Documentary -->
+                <a href="photo projects/grandcanyon.html" class="photo-project">
+                    <img src="images/p-grand canyon/1.jpg" alt="Documentary Photography" class="photo-image">
+                    <div class="photo-info">
+                        <div class="photo-name">Kaibab Trail</div>
+                       
+                    </div>
+
+                </a>
+
+
+         
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Auto-detect landscape images and apply landscape class
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('.photo-image');
+            
+            images.forEach(function(img) {
+                // Wait for image to load to get natural dimensions
+                if (img.complete) {
+                    checkImageOrientation(img);
+                } else {
+                    img.addEventListener('load', function() {
+                        checkImageOrientation(img);
+                    });
+                }
+            });
+            
+            function checkImageOrientation(img) {
+                const aspectRatio = img.naturalWidth / img.naturalHeight;
+                
+                // If aspect ratio > 1.2, consider it landscape
+                if (aspectRatio > 1.2) {
+                    img.closest('.photo-project').classList.add('landscape');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
