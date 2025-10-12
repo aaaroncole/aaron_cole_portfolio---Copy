@@ -177,118 +177,123 @@
 
     <script>
         // ===== SLIDESHOW SYSTEM =====
-        
-        let currentSlideIndex = 0;
-        const totalSlides = 22;
-        const images = [
-            { src: '/cdn-cgi/image/format=auto/images/noguchi/1.jpg', alt: 'Noguchi Extension - Exterior View' },
-            { src: '/cdn-cgi/image/format=auto/images/noguchi/2.jpg', alt: 'Noguchi Extension - Interior Gallery' },
-            { src: '/cdn-cgi/image/format=auto/images/noguchi/3.jpg', alt: 'Noguchi Extension - Garden Integration' },
-            { src: '/cdn-cgi/image/format=auto/images/noguchi/4.jpg', alt: 'Noguchi Extension - Night View' },
-            { src: '/cdn-cgi/image/format=auto/images/noguchi/5.jpg', alt: 'Noguchi Extension - Courtyard' },
-            { src: '/cdn-cgi/image/format=auto/images/noguchi/6.jpg', alt: 'Noguchi Extension - Exhibition Space' },
-            { src: '/cdn-cgi/image/format=auto/images/noguchi/7.jpg', alt: 'Noguchi Extension - Entrance' },
-            { src: '/cdn-cgi/image/format=auto/images/noguchi/8.jpg', alt: 'Noguchi Extension - Material Detail' },
-            { src: '/cdn-cgi/image/format=auto/images/noguchi/9.jpg', alt: 'Noguchi Extension - Site Plan' },
-            { src: '/cdn-cgi/image/format=auto/images/noguchi/10.jpg', alt: 'Noguchi Extension - Architectural Drawings' },
-            { src: '/cdn-cgi/image/format=auto/images/noguchi/11.jpg', alt: 'Noguchi Extension - Model Studies' },
-            { src: '/cdn-cgi/image/format=auto/images/noguchi/12.jpg', alt: 'Noguchi Extension - Construction Details' },
-            { src: '/cdn-cgi/image/format=auto/images/noguchi/13.jpg', alt: 'Noguchi Extension - Landscape Views' },
-            { src: '/cdn-cgi/image/format=auto/images/noguchi/14.jpg', alt: 'Noguchi Extension - Interior Perspective' },
-            { src: '/cdn-cgi/image/format=auto/images/noguchi/15.JPG', alt: 'Noguchi Extension - Gallery Sequence' },
-            { src: '/cdn-cgi/image/format=auto/images/noguchi/16.JPG', alt: 'Noguchi Extension - Final Presentation' },
-            { src: '/cdn-cgi/image/format=auto/images/noguchi/17.JPG', alt: 'Noguchi Extension - Context Analysis' },
-            { src: '/cdn-cgi/image/format=auto/images/noguchi/18.JPG', alt: 'Noguchi Extension - Final Documentation' },
-            { src: '/cdn-cgi/image/format=auto/images/noguchi/19.JPG', alt: 'Noguchi Extension - Final Documentation' },
-            { src: '/cdn-cgi/image/format=auto/images/noguchi/20.JPG', alt: 'Noguchi Extension - Final Documentation' },
-            { src: '/cdn-cgi/image/format=auto/images/noguchi/21.JPG', alt: 'Noguchi Extension - Final Documentation' },
-            { src: '/cdn-cgi/image/format=auto/images/noguchi/22.JPG', alt: 'Noguchi Extension - Final Documentation' },
-        ];
 
-        // DOM elements
-        const mainImage = document.getElementById('mainImage');
-        const prevArrow = document.getElementById('prevArrow');
-        const nextArrow = document.getElementById('nextArrow');
-        const thumbnails = document.querySelectorAll('.thumbnail');
-        const fullscreenBtn = document.getElementById('fullscreenBtn');
-        const fullscreenOverlay = document.getElementById('fullscreenOverlay');
-        const fullscreenImage = document.getElementById('fullscreenImage');
-        const fullscreenPrevArrow = document.getElementById('fullscreenPrevArrow');
-        const fullscreenNextArrow = document.getElementById('fullscreenNextArrow');
+let currentSlideIndex = 0;
+const totalSlides = 22;
+const images = [
+    { src: '/cdn-cgi/image/format=auto/images/noguchi/1.jpg', alt: 'Noguchi Extension - Exterior View' },
+    { src: '/cdn-cgi/image/format=auto/images/noguchi/2.jpg', alt: 'Noguchi Extension - Interior Gallery' },
+    { src: '/cdn-cgi/image/format=auto/images/noguchi/3.jpg', alt: 'Noguchi Extension - Garden Integration' },
+    { src: '/cdn-cgi/image/format=auto/images/noguchi/4.jpg', alt: 'Noguchi Extension - Night View' },
+    { src: '/cdn-cgi/image/format=auto/images/noguchi/5.jpg', alt: 'Noguchi Extension - Courtyard' },
+    { src: '/cdn-cgi/image/format=auto/images/noguchi/6.jpg', alt: 'Noguchi Extension - Exhibition Space' },
+    { src: '/cdn-cgi/image/format=auto/images/noguchi/7.jpg', alt: 'Noguchi Extension - Entrance' },
+    { src: '/cdn-cgi/image/format=auto/images/noguchi/8.jpg', alt: 'Noguchi Extension - Material Detail' },
+    { src: '/cdn-cgi/image/format=auto/images/noguchi/9.jpg', alt: 'Noguchi Extension - Site Plan' },
+    { src: '/cdn-cgi/image/format=auto/images/noguchi/10.jpg', alt: 'Noguchi Extension - Architectural Drawings' },
+    { src: '/cdn-cgi/image/format=auto/images/noguchi/11.jpg', alt: 'Noguchi Extension - Model Studies' },
+    { src: '/cdn-cgi/image/format=auto/images/noguchi/12.jpg', alt: 'Noguchi Extension - Construction Details' },
+    { src: '/cdn-cgi/image/format=auto/images/noguchi/13.jpg', alt: 'Noguchi Extension - Landscape Views' },
+    { src: '/cdn-cgi/image/format=auto/images/noguchi/14.jpg', alt: 'Noguchi Extension - Interior Perspective' },
+    { src: '/cdn-cgi/image/format=auto/images/noguchi/15.JPG', alt: 'Noguchi Extension - Gallery Sequence' },
+    { src: '/cdn-cgi/image/format=auto/images/noguchi/16.JPG', alt: 'Noguchi Extension - Final Presentation' },
+    { src: '/cdn-cgi/image/format=auto/images/noguchi/17.JPG', alt: 'Noguchi Extension - Context Analysis' },
+    { src: '/cdn-cgi/image/format=auto/images/noguchi/18.JPG', alt: 'Noguchi Extension - Final Documentation' },
+    { src: '/cdn-cgi/image/format=auto/images/noguchi/19.JPG', alt: 'Noguchi Extension - Final Documentation' },
+    { src: '/cdn-cgi/image/format=auto/images/noguchi/20.JPG', alt: 'Noguchi Extension - Final Documentation' },
+    { src: '/cdn-cgi/image/format=auto/images/noguchi/21.JPG', alt: 'Noguchi Extension - Final Documentation' },
+    { src: '/cdn-cgi/image/format=auto/images/noguchi/22.JPG', alt: 'Noguchi Extension - Final Documentation' },
+];
 
-        // Update display
-        function updateSlide(index) {
-            currentSlideIndex = index;
-            mainImage.src = images[index].src;
-            mainImage.alt = images[index].alt;
-            
-            // Update fullscreen image if it's open
-            if (fullscreenOverlay.classList.contains('active')) {
-                fullscreenImage.src = images[index].src;
-                fullscreenImage.alt = images[index].alt;
-            }
-            
-            // Update thumbnail active state
-            thumbnails.forEach((thumb, i) => {
-                thumb.classList.toggle('active', i === index);
-            });
-        }
+// DOM elements
+const mainImage = document.getElementById('mainImage');
+const prevArrow = document.getElementById('prevArrow');
+const nextArrow = document.getElementById('nextArrow');
+const thumbnails = document.querySelectorAll('.thumbnail');
+const fullscreenBtn = document.getElementById('fullscreenBtn');
+const fullscreenOverlay = document.getElementById('fullscreenOverlay');
+const fullscreenImage = document.getElementById('fullscreenImage');
+const fullscreenPrevArrow = document.getElementById('fullscreenPrevArrow');
+const fullscreenNextArrow = document.getElementById('fullscreenNextArrow');
 
-        // Navigation functions
-        function nextSlide() {
-            const newIndex = (currentSlideIndex + 1) % totalSlides;
-            updateSlide(newIndex);
-        }
+// Update display
+function updateSlide(index) {
+    // Ensure index is within bounds
+    if (index < 0) {
+        index = totalSlides - 1;
+    } else if (index >= totalSlides) {
+        index = 0;
+    }
+    
+    currentSlideIndex = index;
+    mainImage.src = images[index].src;
+    mainImage.alt = images[index].alt;
+    
+    // Update fullscreen image if it's open
+    if (fullscreenOverlay.classList.contains('active')) {
+        fullscreenImage.src = images[index].src;
+        fullscreenImage.alt = images[index].alt;
+    }
+    
+    // Update thumbnail active state
+    thumbnails.forEach((thumb, i) => {
+        thumb.classList.toggle('active', i === index);
+    });
+}
 
-        function prevSlide() {
-            const newIndex = (currentSlideIndex - 1 + totalSlides) % totalSlides;
-            updateSlide(newIndex);
-        }
+// Navigation functions
+function nextSlide() {
+    updateSlide(currentSlideIndex + 1);
+}
 
-        // Fullscreen functions
-        function openFullscreen() {
-            fullscreenImage.src = images[currentSlideIndex].src;
-            fullscreenImage.alt = images[currentSlideIndex].alt;
-            fullscreenOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
+function prevSlide() {
+    updateSlide(currentSlideIndex - 1);
+}
 
-        function closeFullscreen() {
-            fullscreenOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-        }
+// Fullscreen functions
+function openFullscreen() {
+    fullscreenImage.src = images[currentSlideIndex].src;
+    fullscreenImage.alt = images[currentSlideIndex].alt;
+    fullscreenOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
 
-        // Event listeners
-        prevArrow.addEventListener('click', prevSlide);
-        nextArrow.addEventListener('click', nextSlide);
-        fullscreenBtn.addEventListener('click', openFullscreen);
-        fullscreenPrevArrow.addEventListener('click', prevSlide);
-        fullscreenNextArrow.addEventListener('click', nextSlide);
+function closeFullscreen() {
+    fullscreenOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+}
 
-        // Close fullscreen when clicking on overlay background
-        fullscreenOverlay.addEventListener('click', (e) => {
-            if (e.target === fullscreenOverlay) {
-                closeFullscreen();
-            }
-        });
+// Event listeners
+prevArrow.addEventListener('click', prevSlide);
+nextArrow.addEventListener('click', nextSlide);
+fullscreenBtn.addEventListener('click', openFullscreen);
+fullscreenPrevArrow.addEventListener('click', prevSlide);
+fullscreenNextArrow.addEventListener('click', nextSlide);
 
-        // Thumbnail clicks
-        thumbnails.forEach((thumbnail, index) => {
-            thumbnail.addEventListener('click', () => {
-                updateSlide(index);
-            });
-        });
+// Close fullscreen when clicking on overlay background
+fullscreenOverlay.addEventListener('click', (e) => {
+    if (e.target === fullscreenOverlay) {
+        closeFullscreen();
+    }
+});
 
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight') {
-                nextSlide();
-            } else if (e.key === 'ArrowLeft') {
-                prevSlide();
-            } else if (e.key === 'Escape') {
-                closeFullscreen();
-            }
-        });
+// Thumbnail clicks
+thumbnails.forEach((thumbnail, index) => {
+    thumbnail.addEventListener('click', () => {
+        updateSlide(index);
+    });
+});
+
+// Keyboard navigation
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') {
+        nextSlide();
+    } else if (e.key === 'ArrowLeft') {
+        prevSlide();
+    } else if (e.key === 'Escape') {
+        closeFullscreen();
+    }
+});
     </script>
 </body>
 </html>
