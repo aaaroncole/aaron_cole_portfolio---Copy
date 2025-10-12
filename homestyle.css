@@ -219,18 +219,18 @@
         }
 
         /* Images - Now correctly numbered 1-12 */
-        .photo-item:nth-child(1) { background-image: url('images/dune.jpg'); }
-        .photo-item:nth-child(2) { background-image: url('images/nb-render.png'); }
-        .photo-item:nth-child(3) { background-image: url('images/momastair.jpg'); }
-        .photo-item:nth-child(4) { background-image: url('images/noguchi-render.jpg'); }
-        .photo-item:nth-child(5) { background-image: url('images/1.jpg'); }
-        .photo-item:nth-child(6) { background-image: url('images/mountains.jpg'); }
-        .photo-item:nth-child(7) { background-image: url('images/nb-plan.png'); }
-        .photo-item:nth-child(8) { background-image: url('images/finalmodel-1.jpg'); }
-        .photo-item:nth-child(9) { background-image: url('images/exterior-render.jpg'); }
-        .photo-item:nth-child(10) { background-image: url('images/5.jpg'); }
-        .photo-item:nth-child(11) { background-image: url('images/candle.jpg'); }
-        .photo-item:nth-child(12) { background-image: url('images/lantern.jpg'); }
+        .photo-item:nth-child(1) { background-image: url('/cdn-cgi/image/format=auto/images/dune.jpg'); }
+        .photo-item:nth-child(2) { background-image: url('/cdn-cgi/image/format=autoimages/nb-render.png'); }
+        .photo-item:nth-child(3) { background-image: url('/cdn-cgi/image/format=autoimages/momastair.jpg'); }
+        .photo-item:nth-child(4) { background-image: url('/cdn-cgi/image/format=autoimages/noguchi-render.jpg'); }
+        .photo-item:nth-child(5) { background-image: url('/cdn-cgi/image/format=autoimages/1.jpg'); }
+        .photo-item:nth-child(6) { background-image: url('/cdn-cgi/image/format=autoimages/mountains.jpg'); }
+        .photo-item:nth-child(7) { background-image: url('/cdn-cgi/image/format=autoimages/nb-plan.png'); }
+        .photo-item:nth-child(8) { background-image: url('/cdn-cgi/image/format=autoimages/finalmodel-1.jpg'); }
+        .photo-item:nth-child(9) { background-image: url('/cdn-cgi/image/format=autoimages/exterior-render.jpg'); }
+        .photo-item:nth-child(10) { background-image: url('/cdn-cgi/image/format=autoimages/5.jpg'); }
+        .photo-item:nth-child(11) { background-image: url('/cdn-cgi/image/format=autoimages/candle.jpg'); }
+        .photo-item:nth-child(12) { background-image: url('/cdn-cgi/image/format=autoimages/lantern.jpg'); }
 
         /* Photo overlay - Shows on hover with project info */
         .photo-overlay {
