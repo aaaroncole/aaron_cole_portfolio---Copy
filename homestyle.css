@@ -5,24 +5,35 @@
     box-sizing: border-box;
 }
 
-/* Body - Full screen with no overflow */
+/* Body - Full screen with no overflow - FIXED: Prevent all scrolling */
 body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
     background: #f5f5f5;
-    overflow-x: hidden;
+    overflow: hidden;
     width: 100vw;
     height: 100vh;
     margin: 0;
     padding: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 
-/* Main page container - Full viewport size */
+html {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+}
+
+/* Main page container - Full viewport size - FIXED: Prevent scroll */
 .page-container {
     width: 100vw;
     height: 100vh;
     margin: 0;
     background: white;
-    position: relative;
+    position: fixed;
+    overflow: hidden;
 }
 
 /* Header navigation bar */
@@ -53,14 +64,16 @@ a.logo {
     text-decoration: none !important;
 }
 
-/* Main navigation menu */
+/* Main navigation menu - FIXED: Ensure all items same size */
 .nav {
     display: flex;
     gap: 40px;
+    align-items: center;
 }
 
-/* Navigation links */
-.nav a {
+/* Navigation links and work label - same styling */
+.nav a,
+.work-label {
     color: #222;
     text-decoration: none;
     font-size: 20px;
@@ -78,11 +91,8 @@ a.logo {
     display: inline-block;
 }
 
-/* Work label - no hover effects, not a link */
+/* Work label - no hover effects, not a link - FIXED: removed duplicate font-size */
 .work-label {
-    color: #333;
-    font-size: 20px;
-    font-weight: 300;
     cursor: default;
     opacity: 1;
 }
@@ -146,12 +156,13 @@ a.logo {
     background: #fff;
 }
 
-/* Gallery track - Contains all photos in a row */
+/* Gallery track - Contains all photos in a row - FIXED: Prevent overscroll */
 .gallery-track {
     display: flex;
     height: 100%;
     transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     will-change: transform;
+    touch-action: pan-y pinch-zoom;
 }
 
 /* Invisible navigation areas on left/right edges */
@@ -309,13 +320,15 @@ a.logo {
         font-size: 16px;
     }
 
-    /* Gallery container - full width on mobile */
+    /* Gallery container - full width on mobile - FIXED: prevent side scroll */
     .gallery-container {
         top: 60px;
         width: 100vw;
         height: calc(100vh - 60px);
         left: 0;
         transform: none;
+        overflow: hidden;
+        touch-action: none;
     }
     
     /* Make photos responsive on mobile */
@@ -381,10 +394,7 @@ a.logo {
         gap: 15px;
     }
     
-    .nav a {
-        font-size: 14px;
-    }
-    
+    .nav a,
     .work-label {
         font-size: 14px;
     }
@@ -421,15 +431,4 @@ a.logo {
     }
 }
 
-/* Touch device support - enable swipe gestures */
-@media (hover: none) and (pointer: coarse) {
-    .gallery-track {
-        scroll-snap-type: x mandatory;
-        overflow-x: scroll;
-        -webkit-overflow-scrolling: touch;
-    }
-    
-    .photo-item {
-        scroll-snap-align: center;
-    }
-}
+/* Touch device support - enable swipe gestures - REMOVED: This was causing scroll issues */
