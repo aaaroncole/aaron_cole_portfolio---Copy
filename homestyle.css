@@ -1,300 +1,438 @@
 /* Base styling - Reset margins/padding for clean start */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+/* Body - Full screen with no overflow */
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background: #f5f5f5;
+    overflow-x: hidden;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
 
+/* Main page container - Full viewport size */
+.page-container {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    background: white;
+    position: relative;
+}
 
+/* Header navigation bar */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 calc(50vw - 520px);
+    background: white;
+    z-index: 100;
+}
 
-        /* Body - Full screen with no overflow */
-        body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            background: #f5f5f5;
-            overflow-x: hidden;
-            width: 100vw;
-            height: 100vh;
-            margin: 0;
-            padding: 0;
-        }
+/* Site logo/name */
+.logo {
+    font-size: 20px;
+    font-weight: 400;
+    color: #222;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+}
 
-        /* Main page container - Full viewport size */
-        .page-container {
-            width: 100vw;
-            height: 100vh;
-            margin: 0;
-            background: white;
-            position: relative;
-        }
+a.logo {
+    text-decoration: none !important;
+}
 
-        /* Header navigation bar - MATCHED TO STYLE.CSS */
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 calc(50vw - 520px);
-            background: white;
-            z-index: 100;
-        }
+/* Main navigation menu */
+.nav {
+    display: flex;
+    gap: 40px;
+}
 
-        /* Site logo/name - MATCHED TO STYLE.CSS */
-        .logo {
-            font-size: 20px;
-            font-weight: 400;
-            color: #222;
-            letter-spacing: 0.5px;
-            text-decoration: none;
-        }
+/* Navigation links */
+.nav a {
+    color: #222;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 300;
+    transition: opacity 0.3s ease;
+}
 
-        a.logo {
-            text-decoration: none !important;
-        }
+.nav a:hover {
+    opacity: 0.6;
+}
 
-        /* Main navigation menu - MATCHED TO STYLE.CSS */
-        .nav {
-            display: flex;
-            gap: 40px;
-        }
+/* Dropdown container */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
 
-        /* Navigation links - MATCHED TO STYLE.CSS */
-        .nav a {
-            color: #222;
-            text-decoration: none;
-            font-size: 20px;
-            font-weight: 300;
-            transition: opacity 0.3s ease;
-        }
+/* Work label - no hover effects, not a link */
+.work-label {
+    color: #333;
+    font-size: 20px;
+    font-weight: 300;
+    cursor: default;
+    opacity: 1;
+}
 
-        .nav a:hover {
-            opacity: 0.6;
-        }
+/* Dropdown content */
+.dropdown-content {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    min-width: 120px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    border-radius: 4px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    padding: 8px 0;
+    margin-top: 8px;
+}
 
-        /* Dropdown container */
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
 
-        /* Work label - no hover effects, not a link - MATCHED TO STYLE.CSS */
-        .work-label {
-            color: #333;
-            font-size: 20px;
-            font-weight: 300;
-            cursor: default;
-            opacity: 1;
-        }
+/* Dropdown links */
+.dropdown-content a {
+    display: block;
+    padding: 8px 16px;
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 300;
+    transition: background-color 0.2s ease;
+}
 
-        /* Dropdown content - MATCHED TO STYLE.CSS */
-        .dropdown-content {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: white;
-            min-width: 120px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-            border-radius: 4px;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: all 0.3s ease;
-            z-index: 1000;
-            padding: 8px 0;
-            margin-top: 8px;
-        }
+.dropdown-content a:hover {
+    background-color: #f8f8f8;
+    opacity: 1;
+}
 
-        /* Show dropdown on hover */
-        .dropdown:hover .dropdown-content {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
+/* Active page indicator */
+.dropdown-content a.active {
+    font-weight: 500;
+    color: #333;
+}
 
-        /* Dropdown links - MATCHED TO STYLE.CSS */
-        .dropdown-content a {
-            display: block;
-            padding: 8px 16px;
-            color: #333;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 300;
-            transition: background-color 0.2s ease;
-        }
+/* Main gallery container */
+.gallery-container {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1040px;
+    height: calc(100vh - 50px);
+    overflow: hidden;
+    background: #fff;
+}
 
-        .dropdown-content a:hover {
-            background-color: #f8f8f8;
-            opacity: 1;
-        }
+/* Gallery track - Contains all photos in a row */
+.gallery-track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+}
 
-        /* Active page indicator - MATCHED TO STYLE.CSS */
-        .dropdown-content a.active {
-            font-weight: 500;
-            color: #333;
-        }
+/* Invisible navigation areas on left/right edges */
+.nav-arrow {
+    position: absolute;
+    top: 50px;
+    width: 100px;
+    height: calc(100vh - 50px);
+    z-index: 200;
+    background: transparent;
+    border: none;
+}
 
-        /* Main gallery container - Adjusted for new header height */
-        .gallery-container {
-            position: absolute;
-            top: 50px; /* Adjusted for new header height */
-            left: 50%;
-            transform: translateX(-50%);
-            width: 1040px;
-            height: calc(100vh - 50px); /* Adjusted for new header height */
-            overflow: hidden;
-            background: #fff;
-        }
+/* Left arrow zone with custom cursor */
+.nav-arrow-left {
+    left: calc(50vw - 520px);
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M20 6 L10 16 L20 26" stroke="black" stroke-width="2" fill="none"/></svg>'), auto;
+}
 
-        /* Gallery track - Contains all photos in a row */
-        .gallery-track {
-            display: flex;
-            height: 100%;
-            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            will-change: transform;
-        }
+/* Right arrow zone with custom cursor */
+.nav-arrow-right {
+    right: calc(50vw - 520px);
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M12 6 L22 16 L12 26" stroke="black" stroke-width="2" fill="none"/></svg>'), auto;
+}
 
-        /* Invisible navigation areas on left/right edges */
-        .nav-arrow {
-            position: absolute;
-            top: 50px; /* Adjusted for new header height */
-            width: 100px;
-            height: calc(100vh - 50px); /* Adjusted for new header height */
-            z-index: 200;
-            background: transparent;
-        }
+/* Individual photo items - Now as clickable links */
+.photo-item {
+    flex-shrink: 0;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    transition: filter 0.3s ease;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
 
-        /* Left arrow zone with custom cursor */
-        .nav-arrow-left {
-            left: calc(50vw - 520px);
-            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M20 6 L10 16 L20 26" stroke="black" stroke-width="2" fill="none"/></svg>'), auto;
-        }
+/* Hover effect for photos */
+.photo-item:hover {
+    filter: brightness(1.05) contrast(1.05);
+}
 
-        /* Right arrow zone with custom cursor */
-        .nav-arrow-right {
-            right: calc(50vw - 520px);
-            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M12 6 L22 16 L12 26" stroke="black" stroke-width="2" fill="none"/></svg>'), auto;
-        }
+/* Photo width specifications: 1st, 5th, 9th photos are wide (416px) */
+.photo-item:nth-child(1),
+.photo-item:nth-child(5),
+.photo-item:nth-child(9) {
+    width: 416px;
+}
 
-        /* Individual photo items - Now as clickable links */
-        .photo-item {
-            flex-shrink: 0;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            position: relative;
-            transition: filter 0.3s ease;
-            display: block;
-            text-decoration: none;
-            color: inherit;
-        }
+/* All other photos are standard width (208px) */
+.photo-item:nth-child(2),
+.photo-item:nth-child(3),
+.photo-item:nth-child(4),
+.photo-item:nth-child(6),
+.photo-item:nth-child(7),
+.photo-item:nth-child(8),
+.photo-item:nth-child(10),
+.photo-item:nth-child(11),
+.photo-item:nth-child(12) {
+    width: 208px;
+}
 
-        /* Hover effect for photos */
-        .photo-item:hover {
-            filter: brightness(1.05) contrast(1.05);
-        }
+/* Images - Now correctly numbered 1-12 */
+.photo-item:nth-child(1) { background-image: url('/cdn-cgi/image/format=auto/images/dune.jpg'); }
+.photo-item:nth-child(2) { background-image: url('/cdn-cgi/image/format=auto/images/nb-render.png'); }
+.photo-item:nth-child(3) { background-image: url('/cdn-cgi/image/format=auto/images/momastair.jpg'); }
+.photo-item:nth-child(4) { background-image: url('/cdn-cgi/image/format=auto/images/noguchi-render.jpg'); }
+.photo-item:nth-child(5) { background-image: url('/cdn-cgi/image/format=auto/images/1.jpg'); }
+.photo-item:nth-child(6) { background-image: url('/cdn-cgi/image/format=auto/images/mountains.jpg'); }
+.photo-item:nth-child(7) { background-image: url('/cdn-cgi/image/format=auto/images/nb-plan.png'); }
+.photo-item:nth-child(8) { background-image: url('/cdn-cgi/image/format=auto/images/finalmodel-1.jpg'); }
+.photo-item:nth-child(9) { background-image: url('/cdn-cgi/image/format=auto/images/exterior-render.jpg'); }
+.photo-item:nth-child(10) { background-image: url('/cdn-cgi/image/format=auto/images/5.jpg'); }
+.photo-item:nth-child(11) { background-image: url('/cdn-cgi/image/format=auto/images/candle.jpg'); }
+.photo-item:nth-child(12) { background-image: url('/cdn-cgi/image/format=auto/images/lantern.jpg'); }
 
-        /* Photo width specifications: 1st, 5th, 9th photos are wide (416px) */
-        .photo-item:nth-child(1),
-        .photo-item:nth-child(5),
-        .photo-item:nth-child(9) {
-            width: 416px;
-        }
+/* Photo overlay - Shows on hover with project info */
+.photo-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    color: white;
+    padding: 12px;
+    transform: translateY(100%);
+    transition: transform 0.4s ease;
+}
 
-        /* All other photos are standard width (208px) */
-        .photo-item:nth-child(2),
-        .photo-item:nth-child(3),
-        .photo-item:nth-child(4),
-        .photo-item:nth-child(6),
-        .photo-item:nth-child(7),
-        .photo-item:nth-child(8),
-        .photo-item:nth-child(10),
-        .photo-item:nth-child(11),
-        .photo-item:nth-child(12) {
-            width: 208px;
-        }
+/* Show overlay on photo hover */
+.photo-item:hover .photo-overlay {
+    transform: translateY(0);
+}
 
-        /* Images - Now correctly numbered 1-12 */
-        .photo-item:nth-child(1) { background-image: url('/cdn-cgi/image/format=auto/images/dune.jpg'); }
-        .photo-item:nth-child(2) { background-image: url('/cdn-cgi/image/format=auto/images/nb-render.png'); }
-        .photo-item:nth-child(3) { background-image: url('/cdn-cgi/image/format=auto/images/momastair.jpg'); }
-        .photo-item:nth-child(4) { background-image: url('/cdn-cgi/image/format=auto/images/noguchi-render.jpg'); }
-        .photo-item:nth-child(5) { background-image: url('/cdn-cgi/image/format=auto/images/1.jpg'); }
-        .photo-item:nth-child(6) { background-image: url('/cdn-cgi/image/format=auto/images/mountains.jpg'); }
-        .photo-item:nth-child(7) { background-image: url('/cdn-cgi/image/format=auto/images/nb-plan.png'); }
-        .photo-item:nth-child(8) { background-image: url('/cdn-cgi/image/format=auto/images/finalmodel-1.jpg'); }
-        .photo-item:nth-child(9) { background-image: url('/cdn-cgi/image/format=auto/images/exterior-render.jpg'); }
-        .photo-item:nth-child(10) { background-image: url('/cdn-cgi/image/format=auto/images/5.jpg'); }
-        .photo-item:nth-child(11) { background-image: url('/cdn-cgi/image/format=auto/images/candle.jpg'); }
-        .photo-item:nth-child(12) { background-image: url('/cdn-cgi/image/format=auto/images/lantern.jpg'); }
+/* Project title in overlay */
+.photo-title {
+    font-size: 14px;
+    font-weight: 250;
+    margin-bottom: 5px;
+    color: white;
+}
 
-        /* Photo overlay - Shows on hover with project info */
-        .photo-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(0,0,0,0.8));
-            color: white;
-            padding: 12px;
-            transform: translateY(100%);
-            transition: transform 0.4s ease;
-        }
+/* Project subtitle in overlay */
+.photo-subtitle {
+    font-size: 14px;
+    opacity: 0.8;
+    font-weight: 300;
+    color: white;
+}
 
-        /* Show overlay on photo hover */
-        .photo-item:hover .photo-overlay {
-            transform: translateY(0);
-        }
+/* ===== MOBILE RESPONSIVE STYLES ===== */
 
-        /* Project title in overlay - MATCHED TO STYLE.CSS TEXT SIZES */
-        .photo-title {
-            font-size: 14px;
-            font-weight: 250;
-            margin-bottom: 5px;
-            color: white;
-        }
+/* Tablet and smaller laptops */
+@media screen and (max-width: 1200px) {
+    .header {
+        padding: 0 40px;
+    }
+    
+    .gallery-container {
+        width: calc(100vw - 80px);
+    }
+    
+    .nav-arrow-left {
+        left: 0;
+        width: 60px;
+    }
+    
+    .nav-arrow-right {
+        right: 0;
+        width: 60px;
+    }
+}
 
-        /* Project subtitle in overlay - MATCHED TO STYLE.CSS TEXT SIZES */
-        .photo-subtitle {
-            font-size: 14px;
-            opacity: 0.8;
-            font-weight: 300;
-            color: white;
-        }
+/* Mobile devices */
+@media screen and (max-width: 768px) {
+    /* Header adjustments */
+    .header {
+        padding: 0 20px;
+        height: 60px;
+    }
+    
+    .logo {
+        font-size: 18px;
+    }
 
-        /* Responsive adjustments - MATCHED TO STYLE.CSS */
-        @media screen and (max-width: 1200px) {
-            .header {
-                padding: 0 40px;
-            }
-            
-            .gallery-container {
-                left: 50%;
-                transform: translateX(-50%);
-                width: calc(100vw - 80px);
-            }
-        }
+    /* Compact navigation */
+    .nav {
+        gap: 20px;
+    }
 
-        @media screen and (max-width: 768px) {
-            .header {
-                padding: 0 20px;
-            }
+    .nav a {
+        font-size: 16px;
+    }
+    
+    .work-label {
+        font-size: 16px;
+    }
 
-            .gallery-container {
-                left: 50%;
-                transform: translateX(-50%);
-                width: calc(100vw - 40px);
-            }
+    /* Gallery container - full width on mobile */
+    .gallery-container {
+        top: 60px;
+        width: 100vw;
+        height: calc(100vh - 60px);
+        left: 0;
+        transform: none;
+    }
+    
+    /* Make photos responsive on mobile */
+    .photo-item:nth-child(1),
+    .photo-item:nth-child(5),
+    .photo-item:nth-child(9) {
+        width: 80vw;
+    }
+    
+    .photo-item:nth-child(2),
+    .photo-item:nth-child(3),
+    .photo-item:nth-child(4),
+    .photo-item:nth-child(6),
+    .photo-item:nth-child(7),
+    .photo-item:nth-child(8),
+    .photo-item:nth-child(10),
+    .photo-item:nth-child(11),
+    .photo-item:nth-child(12) {
+        width: 60vw;
+    }
+    
+    /* Navigation arrows - narrower on mobile */
+    .nav-arrow {
+        top: 60px;
+        width: 50px;
+        height: calc(100vh - 60px);
+    }
+    
+    .nav-arrow-left {
+        left: 0;
+    }
+    
+    .nav-arrow-right {
+        right: 0;
+    }
+    
+    /* Always show overlay on mobile (no hover) */
+    .photo-overlay {
+        transform: translateY(0);
+        background: linear-gradient(transparent, rgba(0,0,0,0.9));
+    }
+    
+    .photo-title {
+        font-size: 13px;
+    }
+    
+    .photo-subtitle {
+        font-size: 12px;
+    }
+}
 
-            .nav {
-                gap: 20px;
-            }
+/* Small mobile devices */
+@media screen and (max-width: 480px) {
+    .header {
+        padding: 0 15px;
+    }
+    
+    .logo {
+        font-size: 16px;
+    }
+    
+    .nav {
+        gap: 15px;
+    }
+    
+    .nav a {
+        font-size: 14px;
+    }
+    
+    .work-label {
+        font-size: 14px;
+    }
+    
+    /* Larger photos on small screens for better visibility */
+    .photo-item:nth-child(1),
+    .photo-item:nth-child(5),
+    .photo-item:nth-child(9) {
+        width: 90vw;
+    }
+    
+    .photo-item:nth-child(2),
+    .photo-item:nth-child(3),
+    .photo-item:nth-child(4),
+    .photo-item:nth-child(6),
+    .photo-item:nth-child(7),
+    .photo-item:nth-child(8),
+    .photo-item:nth-child(10),
+    .photo-item:nth-child(11),
+    .photo-item:nth-child(12) {
+        width: 75vw;
+    }
+    
+    .nav-arrow {
+        width: 40px;
+    }
+    
+    .photo-title {
+        font-size: 12px;
+    }
+    
+    .photo-subtitle {
+        font-size: 11px;
+    }
+}
 
-            .nav a {
-                font-size: 14px;
-            }
-        }
+/* Touch device support - enable swipe gestures */
+@media (hover: none) and (pointer: coarse) {
+    .gallery-track {
+        scroll-snap-type: x mandatory;
+        overflow-x: scroll;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .photo-item {
+        scroll-snap-align: center;
+    }
+}

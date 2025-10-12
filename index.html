@@ -130,70 +130,155 @@
     </div>
 
     <script>
-        // ===== GALLERY NAVIGATION SYSTEM =====
-        
-        // Get DOM elements
-        const track = document.getElementById('track');           
-        const prevArrow = document.getElementById('prevArrow');   
-        const nextArrow = document.getElementById('nextArrow');   
-        
-        // Current photo index (0-11 for 12 photos)
-        let currentIndex = 0;
+// ===== GALLERY NAVIGATION SYSTEM =====
 
-        // Photo width configuration (in pixels)
-        const photoWidths = [416, 208, 208, 208, 416, 208, 208, 208, 416, 208, 208, 208];
-        
-        // Calculate total width of all photos combined
-        const totalWidth = photoWidths.reduce((sum, width) => sum + width, 0);
-        
-        // Gallery container width (visible area)
-        const containerWidth = 1040;
-        
-        // Calculate the starting position for each photo
-        const photoPositions = [];
-        let cumulativeWidth = 0;
-        for (let i = 0; i < photoWidths.length; i++) {
-            photoPositions.push(cumulativeWidth);
-            cumulativeWidth += photoWidths[i];
-        }
+// Get DOM elements
+const track = document.getElementById('track');
+const prevArrow = document.getElementById('prevArrow');
+const nextArrow = document.getElementById('nextArrow');
 
-        // ===== GALLERY UPDATE FUNCTION =====
-        function updateGallery() {
-            const maxScroll = totalWidth - containerWidth;
-            const scrollPosition = Math.min(photoPositions[currentIndex], maxScroll);
-            track.style.transform = `translateX(-${scrollPosition}px)`;
-            console.log(`Photo ${currentIndex + 1} of 12, scroll: ${scrollPosition}px`);
-        }
+// Current photo index (0-11 for 12 photos)
+let currentIndex = 0;
 
-        // ===== NAVIGATION FUNCTIONS =====
-        function nextPhoto() {
-            if (currentIndex < photoWidths.length - 1) {
-                currentIndex++;
-                updateGallery();
-            }
-        }
+// Photo width configuration (in pixels) - desktop
+const photoWidthsDesktop = [416, 208, 208, 208, 416, 208, 208, 208, 416, 208, 208, 208];
 
-        function prevPhoto() {
-            if (currentIndex > 0) {
-                currentIndex--;
-                updateGallery();
-            }
-        }
+// Function to get current photo widths based on screen size
+function getPhotoWidths() {
+    const width = window.innerWidth;
+    
+    if (width <= 480) {
+        // Small mobile
+        return [width * 0.9, width * 0.75, width * 0.75, width * 0.75, 
+                width * 0.9, width * 0.75, width * 0.75, width * 0.75, 
+                width * 0.9, width * 0.75, width * 0.75, width * 0.75];
+    } else if (width <= 768) {
+        // Mobile
+        return [width * 0.8, width * 0.6, width * 0.6, width * 0.6, 
+                width * 0.8, width * 0.6, width * 0.6, width * 0.6, 
+                width * 0.8, width * 0.6, width * 0.6, width * 0.6];
+    } else {
+        // Desktop
+        return photoWidthsDesktop;
+    }
+}
 
-        // ===== EVENT LISTENERS =====
-        nextArrow.addEventListener('click', nextPhoto);
-        prevArrow.addEventListener('click', prevPhoto);
+// Function to get container width
+function getContainerWidth() {
+    const width = window.innerWidth;
+    if (width <= 768) {
+        return width;
+    } else if (width <= 1200) {
+        return width - 80;
+    } else {
+        return 1040;
+    }
+}
 
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight') {
-                nextPhoto();
-            } else if (e.key === 'ArrowLeft') {
-                prevPhoto();
-            }
-        });
+// Calculate positions and dimensions
+function calculatePositions() {
+    const photoWidths = getPhotoWidths();
+    const totalWidth = photoWidths.reduce((sum, width) => sum + width, 0);
+    
+    const photoPositions = [];
+    let cumulativeWidth = 0;
+    for (let i = 0; i < photoWidths.length; i++) {
+        photoPositions.push(cumulativeWidth);
+        cumulativeWidth += photoWidths[i];
+    }
+    
+    return { photoWidths, photoPositions, totalWidth };
+}
 
-        // ===== INITIALIZE GALLERY =====
+// ===== GALLERY UPDATE FUNCTION =====
+function updateGallery() {
+    const { photoPositions, totalWidth } = calculatePositions();
+    const containerWidth = getContainerWidth();
+    const maxScroll = totalWidth - containerWidth;
+    const scrollPosition = Math.min(photoPositions[currentIndex], maxScroll);
+    track.style.transform = `translateX(-${scrollPosition}px)`;
+}
+
+// ===== NAVIGATION FUNCTIONS =====
+function nextPhoto() {
+    const { photoWidths } = calculatePositions();
+    if (currentIndex < photoWidths.length - 1) {
+        currentIndex++;
         updateGallery();
+    }
+}
+
+function prevPhoto() {
+    if (currentIndex > 0) {
+        currentIndex--;
+        updateGallery();
+    }
+}
+
+// ===== TOUCH SUPPORT FOR MOBILE =====
+let touchStartX = 0;
+let touchEndX = 0;
+let isDragging = false;
+
+function handleTouchStart(e) {
+    touchStartX = e.touches[0].clientX;
+    isDragging = true;
+}
+
+function handleTouchMove(e) {
+    if (!isDragging) return;
+    touchEndX = e.touches[0].clientX;
+}
+
+function handleTouchEnd() {
+    if (!isDragging) return;
+    isDragging = false;
+    
+    const swipeThreshold = 50;
+    const diff = touchStartX - touchEndX;
+    
+    if (Math.abs(diff) > swipeThreshold) {
+        if (diff > 0) {
+            // Swipe left - go to next photo
+            nextPhoto();
+        } else {
+            // Swipe right - go to previous photo
+            prevPhoto();
+        }
+    }
+}
+
+// ===== EVENT LISTENERS =====
+
+// Click/tap navigation
+nextArrow.addEventListener('click', nextPhoto);
+prevArrow.addEventListener('click', prevPhoto);
+
+// Keyboard navigation
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') {
+        nextPhoto();
+    } else if (e.key === 'ArrowLeft') {
+        prevPhoto();
+    }
+});
+
+// Touch events for mobile
+track.addEventListener('touchstart', handleTouchStart, { passive: true });
+track.addEventListener('touchmove', handleTouchMove, { passive: true });
+track.addEventListener('touchend', handleTouchEnd);
+
+// Handle window resize
+let resizeTimeout;
+window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+        updateGallery();
+    }, 250);
+});
+
+// ===== INITIALIZE GALLERY =====
+updateGallery();
     </script>
 </body>
 </html>
