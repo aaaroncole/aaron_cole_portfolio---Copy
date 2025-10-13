@@ -517,6 +517,7 @@ thumbnail-strip {
     /* Compact navigation - all nav items same size */
     .nav {
         gap: 20px;
+	align items: center;
     }
 
     .nav a,
@@ -537,6 +538,7 @@ thumbnail-strip {
     
     .nav {
         gap: 15px;
+	align items: center;
     }
     
     .nav a,
