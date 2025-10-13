@@ -37,7 +37,7 @@
             padding: 0 calc(50vw - 520px);
             background: white;
             z-index: 100;
-	    width: 100vw;
+            width: 100vw;
         }
 
         /* Site logo/name */
@@ -148,7 +148,7 @@
             color: #333;
             margin-bottom: 10px;
             letter-spacing: 1px;
-	    text-align: center;
+            text-align: center;
         }
 
         /* Project subtitle */
@@ -158,7 +158,7 @@
             color: #444;
             margin-bottom: 20px;
             letter-spacing: 0.5px;
-	    text-align: center;
+            text-align: center;
         }
 
         /* Slideshow container */
@@ -421,10 +421,15 @@
         @media screen and (max-width: 768px) {
             .header {
                 padding: 0 20px;
+                height: 60px;
             }
 
             .content-container {
-                padding: 40px 20px;
+                padding: 80px 20px 40px 20px;
+            }
+
+            .logo {
+                font-size: 18px;
             }
 
             .project-title {
@@ -435,16 +440,16 @@
             .project-subtitle {
                 font-size: 16px;
                 margin-bottom: 20px;
-
             }
 
             .nav {
                 gap: 20px;
-		align-items: center;
+                align-items: center;
             }
 
-            .nav a {
-                font-size: 14px;
+            .nav a,
+            .work-label {
+                font-size: 16px;
             }
 
             .project-details {
@@ -460,58 +465,29 @@
                 width: 100px;
                 height: 67px;
             }
-}
+        }
 
-/* ===== MOBILE RESPONSIVE STYLES FOR HEADER ===== */
+        /* Small mobile devices */
+        @media screen and (max-width: 480px) {
+            .header {
+                padding: 0 15px;
+            }
 
-/* Tablet and smaller laptops */
-@media screen and (max-width: 1200px) {
-    .header {
-        padding: 0 40px;
-    }
-}
-
-/* Mobile devices */
-@media screen and (max-width: 768px) {
-    /* Header adjustments */
-    .header {
-        padding: 0 20px;
-        height: 60px;
-    }
-    
-    .logo {
-        font-size: 18px;
-    }
-
-    /* Compact navigation - all nav items same size */
-    .nav {
-        gap: 20px;
-        align-items: center;
-    }
-
-    .nav a,
-    .work-label {
-        font-size: 16px;
-    }
-}
-
-/* Small mobile devices */
-@media screen and (max-width: 480px) {
-    .header {
-        padding: 0 15px;
-    }
-    
-    .logo {
-        font-size: 16px;
-    }
-    
-    .nav {
-        gap: 15px;
-        align-items: center;
-    }
-    
-    .nav a,
-    .work-label {
-        font-size: 14px;
-    }
-}
+            .content-container {
+                padding: 80px 15px 40px 15px;
+            }
+            
+            .logo {
+                font-size: 16px;
+            }
+            
+            .nav {
+                gap: 15px;
+                align-items: center;
+            }
+            
+            .nav a,
+            .work-label {
+                font-size: 14px;
+            }
+        }
