@@ -385,7 +385,7 @@
     
     .nav {
         gap: 15px;
-	align items: center;
+	align-items: center;
     }
     
     .nav a,
