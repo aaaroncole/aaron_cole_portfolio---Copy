@@ -252,6 +252,7 @@ a.logo {
     padding: 12px;
     transform: translateY(100%);
     transition: transform 0.4s ease;
+    pointer-events: none;
 }
 
 /* Show overlay on photo hover */
@@ -382,11 +383,28 @@ a.logo {
         width: 50vw;
     }
     
-    /* Navigation arrows - narrower on mobile */
+    /* Navigation arrows - visible and styled on mobile */
     .nav-arrow {
         top: 60px;
         width: 50px;
         height: calc(100vh - 60px);
+        background: rgba(255, 255, 255, 0.6);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    /* Add arrow icons for mobile */
+    .nav-arrow-left::after {
+        content: '←';
+        font-size: 20px;
+        color: #222;
+    }
+    
+    .nav-arrow-right::after {
+        content: '→';
+        font-size: 20px;
+        color: #222;
     }
     
     .nav-arrow-left {
@@ -452,6 +470,19 @@ a.logo {
     
     .nav-arrow {
         width: 40px;
+    }
+    
+    /* Arrow icons for small mobile */
+    .nav-arrow-left::after {
+        content: '←';
+        font-size: 18px;
+        color: #222;
+    }
+    
+    .nav-arrow-right::after {
+        content: '→';
+        font-size: 18px;
+        color: #222;
     }
     
     .photo-title {

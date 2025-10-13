@@ -219,7 +219,6 @@ function prevPhoto() {
 let touchStartX = 0;
 let touchEndX = 0;
 let touchStartY = 0;
-let touchEndY = 0;
 let isDragging = false;
 
 function handleTouchStart(e) {
@@ -230,26 +229,25 @@ function handleTouchStart(e) {
 
 function handleTouchMove(e) {
     if (!isDragging) return;
-    touchEndX = e.touches[0].clientX;
-    touchEndY = e.touches[0].clientY;
     
-    // Calculate horizontal and vertical distances
-    const deltaX = Math.abs(touchEndX - touchStartX);
-    const deltaY = Math.abs(touchEndY - touchStartY);
+    const currentX = e.touches[0].clientX;
+    const currentY = e.touches[0].clientY;
+    const deltaX = Math.abs(currentX - touchStartX);
+    const deltaY = Math.abs(currentY - touchStartY);
     
-    // Only prevent default if it's a horizontal swipe
-    if (deltaX > deltaY) {
+    // Only prevent default if horizontal swipe is dominant
+    if (deltaX > deltaY && deltaX > 10) {
         e.preventDefault();
+        touchEndX = currentX;
     }
 }
 
 function handleTouchEnd(e) {
     if (!isDragging) return;
-    isDragging = false;
     
     const swipeThreshold = 50;
     const deltaX = touchStartX - touchEndX;
-    const deltaY = Math.abs(touchStartY - touchEndY);
+    const deltaY = Math.abs(touchStartY - (e.changedTouches[0]?.clientY || touchStartY));
     
     // Only trigger if horizontal swipe is larger than vertical
     if (Math.abs(deltaX) > swipeThreshold && Math.abs(deltaX) > deltaY) {
@@ -262,11 +260,11 @@ function handleTouchEnd(e) {
         }
     }
     
-    // Reset touch coordinates
+    // Reset state
+    isDragging = false;
     touchStartX = 0;
     touchEndX = 0;
     touchStartY = 0;
-    touchEndY = 0;
 }
 
 // ===== EVENT LISTENERS =====
@@ -284,10 +282,11 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// Touch events for mobile - FIXED: Prevent page scroll
-track.addEventListener('touchstart', handleTouchStart, { passive: true });
-track.addEventListener('touchmove', handleTouchMove, { passive: false }); // Must be non-passive to prevent default
-track.addEventListener('touchend', handleTouchEnd);
+// Touch events for mobile - FIXED: Better touch handling
+const galleryContainer = document.getElementById('gallery');
+galleryContainer.addEventListener('touchstart', handleTouchStart, { passive: true });
+galleryContainer.addEventListener('touchmove', handleTouchMove, { passive: false }); // Must be non-passive to prevent default
+galleryContainer.addEventListener('touchend', handleTouchEnd, { passive: true });
 
 // Handle window resize
 let resizeTimeout;
