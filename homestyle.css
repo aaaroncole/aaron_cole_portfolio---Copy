@@ -287,29 +287,10 @@ a.logo {
     .gallery-container {
         width: calc(100vw - 80px);
     }
-
-    /* Make photos responsive on mobile - ADJUSTED: Smaller for better fit */
-    .photo-item:nth-child(1),
-    .photo-item:nth-child(5),
-    .photo-item:nth-child(9) {
-        width: 100vw;
-    }
-    
-    .photo-item:nth-child(2),
-    .photo-item:nth-child(3),
-    .photo-item:nth-child(4),
-    .photo-item:nth-child(6),
-    .photo-item:nth-child(7),
-    .photo-item:nth-child(8),
-    .photo-item:nth-child(10),
-    .photo-item:nth-child(11),
-    .photo-item:nth-child(12) {
-        width: 33.33vw;
-    }
     
     /* Make navigation arrows visible on tablet */
     .nav-arrow {
-        background: rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.7);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -345,8 +326,14 @@ a.logo {
     
     /* Show overlay statically on tablet */
     .photo-overlay {
-        transform: translateY(0);
+        transform: translateY(0) !important;
         background: linear-gradient(transparent, rgba(0,0,0,0.85));
+        pointer-events: none;
+    }
+    
+    .photo-title,
+    .photo-subtitle {
+        opacity: 1;
     }
 }
 
@@ -387,7 +374,7 @@ a.logo {
     .photo-item:nth-child(1),
     .photo-item:nth-child(5),
     .photo-item:nth-child(9) {
-        width: 100vw;
+        width: 70vw;
     }
     
     .photo-item:nth-child(2),
@@ -399,7 +386,7 @@ a.logo {
     .photo-item:nth-child(10),
     .photo-item:nth-child(11),
     .photo-item:nth-child(12) {
-        width: 33.33vw;
+        width: 50vw;
     }
     
     /* Navigation arrows - visible and styled on mobile */
@@ -407,7 +394,7 @@ a.logo {
         top: 60px;
         width: 50px;
         height: calc(100vh - 60px);
-        background: rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.6);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -418,14 +405,12 @@ a.logo {
         content: '←';
         font-size: 20px;
         color: #222;
-	background: transparent;
     }
     
     .nav-arrow-right::after {
         content: '→';
         font-size: 20px;
         color: #222;
-	background: transparent;
     }
     
     .nav-arrow-left {
@@ -438,16 +423,19 @@ a.logo {
     
     /* Always show overlay on mobile (no hover) */
     .photo-overlay {
-        transform: translateY(0);
+        transform: translateY(0) !important;
         background: linear-gradient(transparent, rgba(0,0,0,0.9));
+        pointer-events: none;
     }
     
     .photo-title {
         font-size: 13px;
+        opacity: 1;
     }
     
     .photo-subtitle {
         font-size: 12px;
+        opacity: 0.8;
     }
 }
 
@@ -474,7 +462,7 @@ a.logo {
     .photo-item:nth-child(1),
     .photo-item:nth-child(5),
     .photo-item:nth-child(9) {
-        width: 100vw;
+        width: 75vw;
     }
     
     .photo-item:nth-child(2),
@@ -486,12 +474,12 @@ a.logo {
     .photo-item:nth-child(10),
     .photo-item:nth-child(11),
     .photo-item:nth-child(12) {
-        width: 33.33vw;
+        width: 55vw;
     }
     
     .nav-arrow {
         width: 40px;
-	background: transparent;
+        background: transparent !important;
     }
     
     /* Arrow icons for small mobile */
@@ -499,14 +487,12 @@ a.logo {
         content: '←';
         font-size: 18px;
         color: #222;
-	background: transparent;
     }
     
     .nav-arrow-right::after {
         content: '→';
         font-size: 18px;
         color: #222;
-	background: transparent;
     }
     
     .photo-title {
