@@ -331,11 +331,11 @@ a.logo {
         touch-action: none;
     }
     
-    /* Make photos responsive on mobile */
+    /* Make photos responsive on mobile - ADJUSTED: Smaller for better fit */
     .photo-item:nth-child(1),
     .photo-item:nth-child(5),
     .photo-item:nth-child(9) {
-        width: 80vw;
+        width: 70vw;
     }
     
     .photo-item:nth-child(2),
@@ -347,7 +347,7 @@ a.logo {
     .photo-item:nth-child(10),
     .photo-item:nth-child(11),
     .photo-item:nth-child(12) {
-        width: 60vw;
+        width: 50vw;
     }
     
     /* Navigation arrows - narrower on mobile */
