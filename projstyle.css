@@ -40,8 +40,7 @@
             padding: 0 calc(50vw - 520px);
             background: white;
             z-index: 100;
-	    width: 100vw;
-	    
+            width: 100vw;
         }
 
         /* Site logo/name - MATCHED TO STYLE.CSS */
@@ -243,9 +242,11 @@
                 padding: 0 20px;
                 height: 60px;
             }
+            
             .content-container {
-    padding: 80px 20px 40px 20px;
-}
+                padding: 80px 20px 40px 20px;
+            }
+            
             .logo {
                 font-size: 18px;
             }
@@ -259,10 +260,6 @@
             .nav a,
             .work-label {
                 font-size: 16px;
-            }
-
-            .content-container {
-                padding: 40px 20px;
             }
 
             .page-title {
@@ -281,9 +278,11 @@
             .header {
                 padding: 0 15px;
             }
+            
             .content-container {
-    padding: 80px 15px 40px 15px;
-}
+                padding: 80px 15px 40px 15px;
+            }
+            
             .logo {
                 font-size: 16px;
             }
