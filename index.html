@@ -148,15 +148,15 @@ function getPhotoWidths() {
     const width = window.innerWidth;
     
     if (width <= 480) {
-        // Small mobile
-        return [width * 0.9, width * 0.75, width * 0.75, width * 0.75, 
-                width * 0.9, width * 0.75, width * 0.75, width * 0.75, 
-                width * 0.9, width * 0.75, width * 0.75, width * 0.75];
+        // Small mobile - ADJUSTED: Zoomed out more
+        return [width * 0.75, width * 0.55, width * 0.55, width * 0.55, 
+                width * 0.75, width * 0.55, width * 0.55, width * 0.55, 
+                width * 0.75, width * 0.55, width * 0.55, width * 0.55];
     } else if (width <= 768) {
-        // Mobile
-        return [width * 0.8, width * 0.6, width * 0.6, width * 0.6, 
-                width * 0.8, width * 0.6, width * 0.6, width * 0.6, 
-                width * 0.8, width * 0.6, width * 0.6, width * 0.6];
+        // Mobile - ADJUSTED: Zoomed out more
+        return [width * 0.7, width * 0.5, width * 0.5, width * 0.5, 
+                width * 0.7, width * 0.5, width * 0.5, width * 0.5, 
+                width * 0.7, width * 0.5, width * 0.5, width * 0.5];
     } else {
         // Desktop
         return photoWidthsDesktop;
@@ -218,27 +218,42 @@ function prevPhoto() {
 // ===== TOUCH SUPPORT FOR MOBILE =====
 let touchStartX = 0;
 let touchEndX = 0;
+let touchStartY = 0;
+let touchEndY = 0;
 let isDragging = false;
 
 function handleTouchStart(e) {
     touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
     isDragging = true;
 }
 
 function handleTouchMove(e) {
     if (!isDragging) return;
     touchEndX = e.touches[0].clientX;
+    touchEndY = e.touches[0].clientY;
+    
+    // Calculate horizontal and vertical distances
+    const deltaX = Math.abs(touchEndX - touchStartX);
+    const deltaY = Math.abs(touchEndY - touchStartY);
+    
+    // Only prevent default if it's a horizontal swipe
+    if (deltaX > deltaY) {
+        e.preventDefault();
+    }
 }
 
-function handleTouchEnd() {
+function handleTouchEnd(e) {
     if (!isDragging) return;
     isDragging = false;
     
     const swipeThreshold = 50;
-    const diff = touchStartX - touchEndX;
+    const deltaX = touchStartX - touchEndX;
+    const deltaY = Math.abs(touchStartY - touchEndY);
     
-    if (Math.abs(diff) > swipeThreshold) {
-        if (diff > 0) {
+    // Only trigger if horizontal swipe is larger than vertical
+    if (Math.abs(deltaX) > swipeThreshold && Math.abs(deltaX) > deltaY) {
+        if (deltaX > 0) {
             // Swipe left - go to next photo
             nextPhoto();
         } else {
@@ -246,6 +261,12 @@ function handleTouchEnd() {
             prevPhoto();
         }
     }
+    
+    // Reset touch coordinates
+    touchStartX = 0;
+    touchEndX = 0;
+    touchStartY = 0;
+    touchEndY = 0;
 }
 
 // ===== EVENT LISTENERS =====
@@ -263,9 +284,9 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// Touch events for mobile
+// Touch events for mobile - FIXED: Prevent page scroll
 track.addEventListener('touchstart', handleTouchStart, { passive: true });
-track.addEventListener('touchmove', handleTouchMove, { passive: true });
+track.addEventListener('touchmove', handleTouchMove, { passive: false }); // Must be non-passive to prevent default
 track.addEventListener('touchend', handleTouchEnd);
 
 // Handle window resize
