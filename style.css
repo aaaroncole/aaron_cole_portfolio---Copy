@@ -130,7 +130,7 @@
 
         /* Active page indicator */
         .dropdown-content a.active {
-            font-weight: 500;
+            font-weight: 300;
             color: #333;
         }
 
