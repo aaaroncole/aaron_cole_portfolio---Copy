@@ -290,7 +290,7 @@ a.logo {
     
     /* Make navigation arrows visible on tablet */
     .nav-arrow {
-        background: rgba(255, 255, 255, 0.2);
+        background: transparent !important;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -298,7 +298,7 @@ a.logo {
     }
     
     .nav-arrow:hover {
-        background: rgba(255, 255, 255, 0.9);
+        background: transparent !important;
     }
     
     /* Add arrow icons */
@@ -306,12 +306,16 @@ a.logo {
         content: '←';
         font-size: 24px;
         color: #222;
+        background: transparent !important;
+
     }
     
     .nav-arrow-right::after {
         content: '→';
         font-size: 24px;
         color: #222;
+        background: transparent !important;
+
     }
     
     .nav-arrow-left {

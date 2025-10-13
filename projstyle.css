@@ -221,7 +221,7 @@
             color: white;
         }
 
-        /* Responsive adjustments - MATCHED TO STYLE.CSS */
+       /* Responsive adjustments - MATCHED TO STYLE.CSS */
         @media screen and (max-width: 1200px) {
             .header {
                 padding: 0 40px;
@@ -238,8 +238,25 @@
         }
 
         @media screen and (max-width: 768px) {
+            /* Header adjustments */
             .header {
                 padding: 0 20px;
+                height: 60px;
+            }
+            
+            .logo {
+                font-size: 18px;
+            }
+
+            /* Compact navigation - all nav items same size */
+            .nav {
+                gap: 20px;
+                align-items: center;
+            }
+
+            .nav a,
+            .work-label {
+                font-size: 16px;
             }
 
             .content-container {
@@ -255,64 +272,25 @@
                 grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
                 gap: 16px;
             }
+        }
 
-            .nav {
-                gap: 20px;
+        /* Small mobile devices */
+        @media screen and (max-width: 480px) {
+            .header {
+                padding: 0 15px;
             }
-
-            .nav a {
+            
+            .logo {
+                font-size: 16px;
+            }
+            
+            .nav {
+                gap: 15px;
+                align-items: center;
+            }
+            
+            .nav a,
+            .work-label {
                 font-size: 14px;
             }
-
-/* ===== MOBILE RESPONSIVE STYLES FOR HEADER ===== */
-
-/* Tablet and smaller laptops */
-@media screen and (max-width: 1200px) {
-    .header {
-        padding: 0 40px;
-    }
-}
-
-/* Mobile devices */
-@media screen and (max-width: 768px) {
-    /* Header adjustments */
-    .header {
-        padding: 0 20px;
-        height: 60px;
-    }
-    
-    .logo {
-        font-size: 18px;
-    }
-
-    /* Compact navigation - all nav items same size */
-    .nav {
-        gap: 20px;
-    }
-
-    .nav a,
-    .work-label {
-        font-size: 16px;
-    }
-}
-
-/* Small mobile devices */
-@media screen and (max-width: 480px) {
-    .header {
-        padding: 0 15px;
-    }
-    
-    .logo {
-        font-size: 16px;
-    }
-    
-    .nav {
-        gap: 15px;
-    }
-    
-    .nav a,
-    .work-label {
-        font-size: 14px;
-    }
-}
         }
