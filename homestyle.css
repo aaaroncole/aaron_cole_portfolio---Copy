@@ -115,8 +115,9 @@ a.logo {
     margin-top: 8px;
 }
 
-/* Show dropdown on hover */
-.dropdown:hover .dropdown-content {
+/* To this - only apply hover on devices that support it */        
+.dropdown:hover .dropdown-content,
+.dropdown:focus-within .dropdown-content {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
